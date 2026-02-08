@@ -1,7 +1,7 @@
 :root {
-  --gold: #c8b36a;
-  --rice: #f6f1ea;
-  --ink:  #2b2b2b;
+  --gold: #c8b36a;      /* Muted Gold */
+  --rice: #f6f1ea;      /* Warm Rice White */
+  --ink:  #2b2b2b;      /* Ink Black */
 }
 
 * {
@@ -27,13 +27,14 @@ body {
   max-width: 430px;
   min-height: 100vh;
 
-  /* ★ これが抜けてた */
   display: flex;
   flex-direction: column;
 
+  /* ▼ 背景（寿司を一段引く） */
   background-image: url("bg.png.PNG");
-  background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 85% auto;       /* ← 縮小 */
+  background-position: center 65%; /* ← 少し下へ */
 
   text-align: center;
   padding: 48px 24px 32px;
