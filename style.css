@@ -1,43 +1,39 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
-body {
-  background: #000;
-  color: #fff;
-}
+body { background: #000; color: #fff; }
 
 /* ===== HERO ===== */
-.hero {
-  position: relative;
+.hero{
   min-height: 100vh;
-  background-image: url("bg.png.PNG");
+  background-image: url("bg.png.PNG"); /* ←ここ最重要：ファイル名と完全一致 */
   background-size: cover;
   background-position: center bottom;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 72px 20px 0;
   text-align: center;
-  padding-top: 80px;
 }
 
 /* ===== TEXT ===== */
-.brand {
-  z-index: 2;
-}
+.brand { margin-top: 16px; }
 
-.title {
+.title{
   font-size: clamp(36px, 7vw, 64px);
   letter-spacing: 0.18em;
   font-weight: 500;
-  color: #d6b25e;
+  color: #d6b25e; /* 金寄り */
 }
 
-.tagline {
+.tagline{
   margin-top: 14px;
   font-size: 14px;
   letter-spacing: 0.35em;
@@ -45,35 +41,40 @@ body {
 }
 
 /* ===== BUTTONS ===== */
-.buttons {
-  position: absolute;
-  left: 50%;
-  bottom: 12%;
-  transform: translateX(-50%);
+.buttons{
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+
+  margin-top: auto;
+
+  /* ここを増やすほど “ボタンが上がって” シャリに被りにくくなる */
+  padding-bottom: clamp(280px, 34vh, 420px);
 }
 
-.btn {
-  min-width: 240px;
+.btn{
+  width: min(520px, 86vw);
   padding: 18px 28px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 14px;
-  letter-spacing: 0.2em;
-  transition: all 0.25s ease;
+  letter-spacing: 0.22em;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* メイン */
-.btn.primary {
+.btn.primary{
   background: linear-gradient(135deg, #e6c670, #c9a24b);
   color: #1a1a1a;
 }
 
-/* サブ */
-.btn.ghost {
+.btn.ghost{
   border: 1px solid rgba(255,255,255,0.55);
   color: #fff;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(6px);
 }
+
+.btn:active { transform: scale(0.98); }
