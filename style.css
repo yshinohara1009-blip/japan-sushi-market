@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,7 +17,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100svh; /* iPhoneのアドレスバー対策 */
+  min-height: 100svh;
   background-image: url("bg.png");
   background-size: cover;
   background-position: center bottom;
@@ -25,13 +26,13 @@ body {
   flex-direction: column;
   align-items: center;
 
-  padding: 64px 20px 24px;
+  padding: 72px 20px 24px;
   text-align: center;
 }
 
 /* ===== TEXT ===== */
 .brand {
-  margin-top: 12px;
+  margin-top: 20px;
 }
 
 .title {
@@ -49,17 +50,18 @@ body {
 }
 
 /* ===== BUTTONS ===== */
-/* ✅ 下に落とさず “寿司に被らない高さ” に置く */
 .buttons {
   display: flex;
   gap: 16px;
   justify-content: center;
 
-  /* ここが重要：ボタン位置を固定 */
-  margin-top: 28px;
-  transform: translateY(24px);
+  /* ★ ここで位置を完全制御 */
+  margin-top: 0;
+  padding-top: 32px;
 
-  /* 画面下のセーフエリア考慮 */
+  /* ★ 寿司と被らない安全位置 */
+  transform: translateY(200px);
+
   padding-bottom: env(safe-area-inset-bottom);
 }
 
@@ -73,23 +75,17 @@ body {
   transition: all 0.25s ease;
 }
 
-/* メイン */
+/* メインボタン */
 .btn.primary {
   background: linear-gradient(135deg, #e6c670, #c9a24b);
   color: #1a1a1a;
 }
 
-/* サブ */
+/* サブボタン */
 .btn.ghost {
   border: 1px solid rgba(255,255,255,0.55);
   color: #fff;
   background: rgba(0,0,0,0.25);
-}
-
-/* hover（PCだけ効く） */
-.btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
 }
 
 /* ===== MOBILE ===== */
@@ -98,7 +94,7 @@ body {
     flex-direction: column;
     width: 100%;
     gap: 12px;
-    transform: translateY(18px);
+    transform: translateY(200px);
   }
 
   .btn {
