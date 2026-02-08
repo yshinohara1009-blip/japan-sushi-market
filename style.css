@@ -16,7 +16,7 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  min-height: 100vh;
+  min-height: 100svh; /* iPhoneのアドレスバー対策 */
   background-image: url("bg.png");
   background-size: cover;
   background-position: center bottom;
@@ -25,13 +25,13 @@ body {
   flex-direction: column;
   align-items: center;
 
-  padding: 72px 20px 0;
+  padding: 64px 20px 24px;
   text-align: center;
 }
 
 /* ===== TEXT ===== */
 .brand {
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .title {
@@ -49,14 +49,18 @@ body {
 }
 
 /* ===== BUTTONS ===== */
+/* ✅ 下に落とさず “寿司に被らない高さ” に置く */
 .buttons {
   display: flex;
   gap: 16px;
-
-  margin-top: auto;
-  padding-bottom: clamp(110px, 18vh, 190px); /* シャリ被り防止 */
-
   justify-content: center;
+
+  /* ここが重要：ボタン位置を固定 */
+  margin-top: 28px;
+  transform: translateY(24px);
+
+  /* 画面下のセーフエリア考慮 */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .btn {
@@ -82,7 +86,23 @@ body {
   background: rgba(0,0,0,0.25);
 }
 
+/* hover（PCだけ効く） */
 .btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 640px) {
+  .buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    transform: translateY(18px);
+  }
+
+  .btn {
+    width: min(360px, 92%);
+    margin: 0 auto;
+  }
 }
