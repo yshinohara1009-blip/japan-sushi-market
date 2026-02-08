@@ -30,11 +30,11 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* ▼ 背景（寿司を一段引く） */
+  /* ▼ 背景（さらに縮小） */
   background-image: url("bg.png.PNG");
   background-repeat: no-repeat;
-  background-size: 60% auto;       /* ← 縮小 */
-  background-position: center 65%; /* ← 少し下へ */
+  background-size: 70% auto;       /* ← かなり引く */
+  background-position: center 68%; /* ← 少し下へ */
 
   text-align: center;
   padding: 48px 24px 32px;
