@@ -1,7 +1,7 @@
 :root {
-  --gold: #c8b36a;      /* Muted Gold */
-  --rice: #f6f1ea;      /* Rice White */
-  --ink:  #2b2b2b;      /* Ink Black */
+  --gold: #c8b36a;
+  --rice: #f6f1ea;
+  --ink:  #2b2b2b;
 }
 
 * {
@@ -13,7 +13,7 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #000; /* 外側は黒でOK */
+  background: #000;
 }
 
 body {
@@ -29,16 +29,14 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* ▼ 背景：ちょうど良い距離感（ここが肝） */
   background-image: url("bg.png.PNG");
+  background-size: cover;
+  background-position: center 60%;
   background-repeat: no-repeat;
-  background-size: cover;          /* ← 画像に任せる */
-  background-position: center 60%; /* ← 少し下に寿司 */
-
-  background-color: var(--rice);   /* ← 黒を完全に防ぐ */
+  background-color: var(--rice);
 
   text-align: center;
-  padding: 48px 24px 32px;
+  padding: 72px 24px 32px; /* ← 上だけ増やした（48 → 72） */
 }
 
 h1 {
