@@ -1,39 +1,44 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 html, body {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
-body { background: #000; color: #fff; }
+body {
+  background: #000;
+  color: #fff;
+}
 
 /* ===== HERO ===== */
-.hero{
+.hero {
+  position: relative;
   min-height: 100vh;
-  background-image: url("bg.png.PNG"); /* ←ここ最重要：ファイル名と完全一致 */
+  background-image: url("bg.png.PNG");
   background-size: cover;
   background-position: center bottom;
-  background-repeat: no-repeat;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  padding: 72px 20px 0;
   text-align: center;
+  padding-top: 72px;
 }
 
 /* ===== TEXT ===== */
-.brand { margin-top: 16px; }
+.brand {
+  position: relative;
+  z-index: 2;
+}
 
-.title{
+.title {
   font-size: clamp(36px, 7vw, 64px);
   letter-spacing: 0.18em;
   font-weight: 500;
-  color: #d6b25e; /* 金寄り */
+  color: #d6b25e;
 }
 
-.tagline{
+.tagline {
   margin-top: 14px;
   font-size: 14px;
   letter-spacing: 0.35em;
@@ -41,40 +46,35 @@ body { background: #000; color: #fff; }
 }
 
 /* ===== BUTTONS ===== */
-.buttons{
+.buttons {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 48px; /* ← ここが重要。シャリと完全に被らない */
   display: flex;
   flex-direction: column;
   gap: 14px;
-
-  margin-top: auto;
-
-  /* ここを増やすほど “ボタンが上がって” シャリに被りにくくなる */
-  padding-bottom: clamp(280px, 34vh, 420px);
+  z-index: 3;
 }
 
-.btn{
-  width: min(520px, 86vw);
-  padding: 18px 28px;
+.btn {
+  min-width: 240px;
+  padding: 16px 28px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 14px;
-  letter-spacing: 0.22em;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  letter-spacing: 0.2em;
 }
 
-.btn.primary{
+/* メイン */
+.btn.primary {
   background: linear-gradient(135deg, #e6c670, #c9a24b);
   color: #1a1a1a;
 }
 
-.btn.ghost{
-  border: 1px solid rgba(255,255,255,0.55);
+/* サブ */
+.btn.ghost {
+  border: 1px solid rgba(255,255,255,0.6);
   color: #fff;
-  background: rgba(0,0,0,0.22);
-  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.25);
 }
-
-.btn:active { transform: scale(0.98); }
