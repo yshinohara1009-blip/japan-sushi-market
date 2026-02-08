@@ -4,127 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      font-family: 'Inter', sans-serif;
-    }
-
-    body {
-      background: url("bg.png.PNG") no-repeat center center / cover;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    /* ===== GOLD TITLE ===== */
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      letter-spacing: 0.15em;
-      margin-bottom: 14px;
-
-      background: linear-gradient(
-        135deg,
-        #f6e27a 0%,
-        #e6b65c 25%,
-        #c89b3c 50%,
-        #e6b65c 75%,
-        #f6e27a 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      text-shadow:
-        0 1px 8px rgba(200,155,60,0.25);
-    }
-
-    .tagline {
-      font-size: 14px;
-      letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 40px;
-    }
-
-    .actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,215,140,0.6);
-      color: #f5e6b8;
-      text-decoration: none;
-      font-size: 13px;
-      letter-spacing: 0.15em;
-      transition: all 0.25s ease;
-      background: rgba(0,0,0,0.25);
-    }
-
-    .btn:hover {
-      background: rgba(255,215,140,0.15);
-    }
-
-    .btn.primary {
-      background: linear-gradient(
-        135deg,
-        #f6e27a,
-        #c89b3c
-      );
-      color: #000;
-      border: none;
-    }
-
-    .btn.primary:hover {
-      opacity: 0.9;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <div class="overlay"></div>
+  <section class="hero">
+    <div class="brand">
+      <h1 class="title">JAPAN SUSHI<br>MARKET</h1>
+      <p class="tagline">Eat. Trade. Burn.</p>
+    </div>
 
-  <div class="container">
-    <h1>JAPAN SUSHI<br>MARKET</h1>
-    <div class="tagline">Eat. Trade. Burn.</div>
-
-    <div class="actions">
-      <a class="btn primary" href="#" target="_blank">ENTER MARKET</a>
-      <a class="btn"
-         href="https://gaudy-fountain-233.notion.site/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda"
-         target="_blank"
-         rel="noopener">
+    <div class="buttons">
+      <a href="#" class="btn primary">ENTER MARKET</a>
+      <a href="https://gaudy-fountain-233.notion.site/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link" class="btn secondary">
         VIEW LOG
       </a>
     </div>
-  </div>
+  </section>
 </body>
 </html>
