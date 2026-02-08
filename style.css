@@ -13,7 +13,7 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #000;
+  background: #000; /* ここは触らない */
   color: var(--ink);
 }
 
@@ -30,11 +30,12 @@ body {
   display: flex;
   flex-direction: column;
 
-  /* ▼ 背景（さらに縮小） */
+  /* ▼ 背景：黒が絶対に出ない設定 */
   background-image: url("bg.png.PNG");
   background-repeat: no-repeat;
-  background-size: 70% auto;       /* ← かなり引く */
-  background-position: center 68%; /* ← 少し下へ */
+  background-size: 90% auto;        /* ← 縮小しすぎない */
+  background-position: center 62%;  /* ← 少し上に戻す */
+  background-color: var(--rice);    /* ← 黒を完全に殺す */
 
   text-align: center;
   padding: 48px 24px 32px;
@@ -51,7 +52,7 @@ h1 {
   margin-top: 14px;
   font-size: 12px;
   letter-spacing: 0.35em;
-  color: rgba(43, 43, 43, 0.7);
+  color: rgba(43, 43, 43, 0.6);
 }
 
 .buttons {
@@ -76,7 +77,7 @@ h1 {
   display: block;
   width: 100%;
   padding: 14px 0;
-  background: rgba(246, 241, 234, 0.6);
+  background: rgba(246, 241, 234, 0.75);
   color: var(--ink);
   border-radius: 999px;
   text-decoration: none;
