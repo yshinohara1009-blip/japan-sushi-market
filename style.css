@@ -33,7 +33,7 @@ body {
   /* ▼ 背景（寿司を一段引く） */
   background-image: url("bg.png.PNG");
   background-repeat: no-repeat;
-  background-size: 85% auto;       /* ← 縮小 */
+  background-size: 60% auto;       /* ← 縮小 */
   background-position: center 65%; /* ← 少し下へ */
 
   text-align: center;
