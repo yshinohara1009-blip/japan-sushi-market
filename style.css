@@ -9,7 +9,6 @@ html, body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* bodyは何も塗らない */
 body {
   background: #000;
 }
@@ -19,7 +18,7 @@ body {
   min-height: 100vh;
   width: 100%;
 
-  /* 🔥 背景画像を100%保証 */
+  /* ★ ここ重要：実ファイル名と完全一致 */
   background-image: url("bg.png.PNG");
   background-size: cover;
   background-position: center bottom;
@@ -34,9 +33,8 @@ body {
 .content {
   width: 100%;
   max-width: 480px;
-  padding: 80px 20px 160px;
+  padding: 90px 20px 160px;
   text-align: center;
-  color: #fff;
 }
 
 /* ===== TEXT ===== */
@@ -48,15 +46,16 @@ h1 {
 }
 
 .tagline {
-  margin-top: 20px;
+  margin-top: 18px;
   font-size: 14px;
   letter-spacing: 0.35em;
+  color: #fff;
   opacity: 0.9;
 }
 
 /* ===== BUTTONS ===== */
 .buttons {
-  margin-top: 120px;
+  margin-top: 130px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -81,7 +80,7 @@ h1 {
 
 /* サブ */
 .btn.ghost {
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.6);
   color: #fff;
   background: rgba(0,0,0,0.35);
 }
