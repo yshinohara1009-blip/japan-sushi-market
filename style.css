@@ -17,21 +17,22 @@ body {
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
-  background-image: url("bg.png.PNG");
+  background-image: url("./bg.png.PNG");
   background-size: cover;
   background-position: center bottom;
+  background-repeat: no-repeat;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  padding: 72px 20px 40px;
+  align-items: center;
   text-align: center;
+
+  padding-top: 64px;
 }
 
 /* ===== TEXT ===== */
-.content {
-  margin-top: 40px;
+.brand {
+  margin-top: 20px;
 }
 
 .title {
@@ -50,19 +51,16 @@ body {
 
 /* ===== BUTTONS ===== */
 .buttons {
+  margin-top: auto;
+  padding-bottom: 22vh; /* ← シャリ絶対回避ゾーン */
   display: flex;
   flex-direction: column;
-  gap: 18px;
-
-  /* 👇 ここが重要：シャリと絶対に被らない */
-  margin-bottom: clamp(220px, 28vh, 320px);
-
-  align-items: center;
+  gap: 16px;
 }
 
 .btn {
-  min-width: 240px;
-  padding: 16px 28px;
+  min-width: 260px;
+  padding: 18px 32px;
   border-radius: 999px;
   text-decoration: none;
   font-size: 14px;
@@ -78,7 +76,7 @@ body {
 
 /* サブ */
 .btn.ghost {
-  border: 1px solid rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.6);
   color: #fff;
   background: rgba(0,0,0,0.25);
 }
