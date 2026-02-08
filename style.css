@@ -1,80 +1,85 @@
+:root {
+  --gold: #c8b36a;      /* Muted Gold */
+  --rice: #f6f1ea;      /* Warm Rice White */
+  --ink:  #2b2b2b;      /* Ink Black */
+}
+
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html, body {
+  margin: 0;
+  padding: 0;
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: var(--rice);
+  color: var(--ink);
 }
 
 body {
-  background: #000;
-  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ===== HERO ===== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  background-image: url("bg.png.PNG");
+.container {
+  width: 100%;
+  max-width: 430px;
+  height: 100vh;
+  background-image: url("bg.png");
   background-size: cover;
-  background-position: center bottom;
+  background-position: center;
   text-align: center;
-  padding-top: 72px;
+  padding: 48px 24px 32px;
 }
 
-/* ===== TEXT ===== */
-.brand {
-  position: relative;
-  z-index: 2;
-}
-
-.title {
-  font-size: clamp(36px, 7vw, 64px);
-  letter-spacing: 0.18em;
-  font-weight: 500;
-  color: #d6b25e;
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
 }
 
 .tagline {
   margin-top: 14px;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 0.35em;
-  opacity: 0.9;
+  color: rgba(43, 43, 43, 0.7);
 }
 
-/* ===== BUTTONS ===== */
 .buttons {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 48px; /* ← ここが重要。シャリと完全に被らない */
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  z-index: 3;
+  margin-top: auto;
+  padding-bottom: 32px;
 }
 
-.btn {
-  min-width: 240px;
-  padding: 16px 28px;
+.button-primary {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  margin-bottom: 16px;
+  background: var(--gold);
+  color: #ffffff;
   border-radius: 999px;
   text-decoration: none;
   font-size: 14px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
+  transition: transform 0.15s ease;
 }
 
-/* メイン */
-.btn.primary {
-  background: linear-gradient(135deg, #e6c670, #c9a24b);
-  color: #1a1a1a;
+.button-primary:active {
+  transform: scale(0.98);
 }
 
-/* サブ */
-.btn.ghost {
-  border: 1px solid rgba(255,255,255,0.6);
-  color: #fff;
-  background: rgba(0,0,0,0.25);
+.button-secondary {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  background: rgba(246, 241, 234, 0.6);
+  color: var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  border: 1px solid var(--gold);
 }
