@@ -1,7 +1,7 @@
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -11,72 +11,67 @@ html, body {
 
 body {
   background: #000;
-  color: #fff;
 }
 
 /* ===== HERO ===== */
 .hero {
   min-height: 100vh;
-  background-image: url("bg.png.PNG");
+
+  /* 🔥 背景を強制表示 */
+  background: url("bg.png.PNG") no-repeat center bottom;
   background-size: cover;
-  background-position: center bottom;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 
-  padding: 96px 20px 0;
+  padding: 96px 20px 220px;
   text-align: center;
+  color: #fff;
 }
 
-/* ===== TEXT ===== */
-.brand {
-  margin-top: 0;
-}
-
-.title {
+/* ===== TOP TEXT ===== */
+.top h1 {
   font-size: clamp(36px, 7vw, 64px);
   letter-spacing: 0.18em;
   font-weight: 500;
   color: #d6b25e;
 }
 
-.tagline {
-  margin-top: 16px;
+.top p {
+  margin-top: 18px;
   font-size: 14px;
   letter-spacing: 0.35em;
   opacity: 0.9;
 }
 
 /* ===== BUTTONS ===== */
-.buttons {
+.bottom {
   display: flex;
   flex-direction: column;
   gap: 18px;
-
-  margin-top: auto;
-  padding-bottom: 220px; /* ← シャリと絶対に被らない */
+  align-items: center;
 }
 
+/* 共通 */
 .btn {
-  min-width: 240px;
-  padding: 18px 32px;
+  width: 260px;
+  padding: 18px 0;
   border-radius: 999px;
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 0.2em;
-  transition: all 0.25s ease;
   text-align: center;
 }
 
 /* メイン */
-.btn.primary {
+.btn.main {
   background: linear-gradient(135deg, #e6c670, #c9a24b);
   color: #1a1a1a;
 }
 
 /* サブ */
-.btn.ghost {
+.btn.sub {
   border: 1px solid rgba(255,255,255,0.55);
   color: #fff;
   background: rgba(0,0,0,0.35);
