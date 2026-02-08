@@ -1,85 +1,20 @@
-:root {
-  --gold: #c8b36a;      /* Muted Gold */
-  --rice: #f6f1ea;      /* Warm Rice White */
-  --ink:  #2b2b2b;      /* Ink Black */
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JAPAN SUSHI MARKET</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>JAPAN SUSHI<br>MARKET</h1>
+    <div class="tagline">EAT. TRADE. BURN.</div>
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: var(--rice);
-  color: var(--ink);
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  width: 100%;
-  max-width: 430px;
-  height: 100vh;
-  background-image: url("bg.png.PNG");
-  background-size: cover;
-  background-position: center;
-  text-align: center;
-  padding: 48px 24px 32px;
-}
-
-h1 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 0.22em;
-  color: var(--gold);
-}
-
-.tagline {
-  margin-top: 14px;
-  font-size: 12px;
-  letter-spacing: 0.35em;
-  color: rgba(43, 43, 43, 0.7);
-}
-
-.buttons {
-  margin-top: auto;
-  padding-bottom: 32px;
-}
-
-.button-primary {
-  display: block;
-  width: 100%;
-  padding: 14px 0;
-  margin-bottom: 16px;
-  background: var(--gold);
-  color: #ffffff;
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.25em;
-  transition: transform 0.15s ease;
-}
-
-.button-primary:active {
-  transform: scale(0.98);
-}
-
-.button-secondary {
-  display: block;
-  width: 100%;
-  padding: 14px 0;
-  background: rgba(246, 241, 234, 0.6);
-  color: var(--ink);
-  border-radius: 999px;
-  text-decoration: none;
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  border: 1px solid var(--gold);
-}
+    <div class="buttons">
+      <a href="#" class="button-primary">ENTER MARKET</a>
+      <a href="#" class="button-secondary">VIEW LOG</a>
+    </div>
+  </div>
+</body>
+</html>
