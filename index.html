@@ -4,16 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=shock2" />
+  <link rel="stylesheet" href="style.css?v=tapshock1" />
 </head>
 <body>
-  <!-- 入口の衝撃（初回だけ表示 / ?shock=1で強制表示） -->
-  <div class="shock" id="shock" aria-hidden="true">
-    <div class="shock__bite"></div>
-    <div class="shock__grain"></div>
-  </div>
-
   <div class="container" id="container">
+    <!-- 事件オーバーレイ（普段は非表示） -->
+    <div class="event" id="event" aria-hidden="true">
+      <div class="event__shatter"></div>
+      <div class="event__glitch"></div>
+      <div class="event__dust"></div>
+    </div>
+
     <h1>JAPAN SUSHI<br>MARKET</h1>
     <div class="tagline">EAT. TRADE. BURN.</div>
 
@@ -32,28 +33,42 @@
 
   <script>
     (function () {
-      const VERSION = "shock2"; // ←更新ごとに変えると“また1回出る”
-      const KEY = `jsm_entry_shock_seen_${VERSION}`;
+      const VERSION = "tapshock1";
+      const KEY = `jsm_event_${VERSION}`;
 
       const params = new URLSearchParams(location.search);
-      const force = params.get("shock") === "1";      // ?shock=1 で強制表示
-      const reset = params.get("reset") === "1";      // ?reset=1 で見た扱い解除
+      const force = params.get("shock") === "1"; // ?shock=1 で毎回テスト可能
+      const reset = params.get("reset") === "1"; // ?reset=1 で初回扱いに戻す
 
       if (reset) localStorage.removeItem(KEY);
 
-      const alreadySeen = localStorage.getItem(KEY) === "1";
-      if (alreadySeen && !force) return;
+      const container = document.getElementById("container");
+      const eventLayer = document.getElementById("event");
 
-      window.addEventListener("load", () => {
-        const shock = document.getElementById("shock");
+      function canTrigger(e) {
+        // ボタン・リンク押下では発動しない
+        const a = e.target.closest("a");
+        return !a;
+      }
 
-        setTimeout(() => {
-          shock.classList.add("is-on");
-          localStorage.setItem(KEY, "1");
+      function triggerOnce() {
+        eventLayer.classList.remove("is-on");
+        // reflowで確実にアニメ再生
+        void eventLayer.offsetWidth;
+        eventLayer.classList.add("is-on");
 
-          setTimeout(() => shock.classList.remove("is-on"), 650);
-        }, 220);
-      });
+        if (!force) localStorage.setItem(KEY, "1");
+
+        setTimeout(() => eventLayer.classList.remove("is-on"), 900);
+      }
+
+      const already = localStorage.getItem(KEY) === "1";
+      if (already && !force) return;
+
+      container.addEventListener("pointerdown", (e) => {
+        if (!canTrigger(e)) return;
+        triggerOnce();
+      }, { passive: true });
     })();
   </script>
 </body>
