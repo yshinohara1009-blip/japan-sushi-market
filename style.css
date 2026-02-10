@@ -37,19 +37,14 @@ body {
 
   position: relative;
   overflow: hidden;
-
-  animation: intro 0.9s ease-out both;
 }
 
-h1, .tagline, .buttons { position: relative; z-index: 2; }
-
+/* ===== テキスト ===== */
 h1 {
   margin: 0;
   font-size: 28px;
   letter-spacing: 0.22em;
   color: var(--gold);
-  animation: titleIn 1.05s ease-out both;
-  animation-delay: 0.10s;
 }
 
 .tagline {
@@ -57,18 +52,15 @@ h1 {
   font-size: 12px;
   letter-spacing: 0.35em;
   color: rgba(43, 43, 43, 0.6);
-  animation: titleIn 1.05s ease-out both;
-  animation-delay: 0.18s;
 }
 
 .buttons {
   margin-top: auto;
   padding-bottom: 32px;
-  animation: buttonsIn 1.05s ease-out both;
-  animation-delay: 0.30s;
 }
 
-.button-primary, .button-secondary {
+.button-primary,
+.button-secondary {
   display: block;
   width: 100%;
   padding: 14px 0;
@@ -80,135 +72,41 @@ h1 {
 .button-primary {
   margin-bottom: 16px;
   background: var(--gold);
-  color: #fff;
+  color: #ffffff;
   font-size: 14px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.button-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.26);
 }
 
 .button-secondary {
-  background: rgba(246, 241, 234, 0.82);
+  background: rgba(246, 241, 234, 0.8);
   color: var(--ink);
   font-size: 13px;
-  letter-spacing: 0.30em;
+  letter-spacing: 0.3em;
   border: 1px solid var(--gold);
-  transition: background 0.25s ease, color 0.25s ease;
-}
-.button-secondary:hover {
-  background: var(--gold);
-  color: #fff;
 }
 
-/* ===== Event layer ===== */
-.event {
+/* ===== 金箔スノー ===== */
+.gold-flake {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  width: 6px;
+  height: 4px;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.4),
+    rgba(200,179,106,0.9),
+    rgba(255,255,255,0.3)
+  );
+  border-radius: 1px;
   pointer-events: none;
-  opacity: 0;
+
+  animation: fall linear forwards;
 }
 
-/* 起動時だけ表示 */
-.event.is-on { opacity: 1; }
-
-.event__shatter,
-.event__glitch,
-.event__dust {
-  position: absolute;
-  inset: -20%;
-}
-
-/* 1) 金の裂け目：粒を見せず“割れる光”だけ */
-.event__shatter {
-  background:
-    linear-gradient(115deg,
-      transparent 0%,
-      transparent 44%,
-      rgba(255,255,255,0.00) 47%,
-      rgba(255,255,255,0.22) 49%,
-      rgba(200,179,106,0.46) 50%,
-      rgba(255,255,255,0.20) 52%,
-      rgba(255,255,255,0.00) 55%,
-      transparent 58%,
-      transparent 100%),
-    linear-gradient(115deg,
-      transparent 0%,
-      transparent 50%,
-      rgba(200,179,106,0.18) 50.5%,
-      transparent 52%,
-      transparent 100%);
-  mix-blend-mode: screen;
-  filter: blur(0.25px);
-  opacity: 0;
-  transform: translateX(-18%) translateY(-10%);
-  animation: none;
-}
-
-/* 2) 微グリッチ：0.12秒だけズレる（上品） */
-.event__glitch {
-  background: rgba(0,0,0,0);
-  opacity: 0;
-  mix-blend-mode: multiply;
-  animation: none;
-}
-
-/* 3) 金の“粉”は粒じゃなく、薄い流れ */
-.event__dust {
-  background:
-    repeating-linear-gradient(125deg,
-      rgba(200,179,106,0.08) 0 1px,
-      transparent 1px 12px),
-    radial-gradient(circle at 30% 25%, rgba(200,179,106,0.14), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.10), transparent 60%);
-  mix-blend-mode: overlay;
-  filter: blur(0.55px);
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: none;
-}
-
-/* 発動時にだけアニメ */
-.event.is-on .event__shatter { animation: shatter 0.75s ease-out both; }
-.event.is-on .event__glitch  { animation: glitch 0.22s ease-out both; }
-.event.is-on .event__dust    { animation: dust 0.75s ease-out both; }
-
-/* ===== animations ===== */
-@keyframes intro {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes titleIn {
-  from { opacity: 0; transform: translateY(4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes buttonsIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* 割れる光が走って消える */
-@keyframes shatter {
-  0%   { opacity: 0; transform: translateX(-22%) translateY(-12%) scale(1); }
-  18%  { opacity: 0.95; }
-  55%  { opacity: 0.35; transform: translateX(10%) translateY(6%) scale(1.01); }
-  100% { opacity: 0; transform: translateX(22%) translateY(12%) scale(1.01); }
-}
-
-/* ほんの一瞬だけズレる（やりすぎない） */
-@keyframes glitch {
-  0%   { opacity: 0; transform: translateX(0); }
-  25%  { opacity: 0.22; transform: translateX(2px); }
-  55%  { opacity: 0.12; transform: translateX(-2px); }
-  100% { opacity: 0; transform: translateX(0); }
-}
-
-/* 金の気配が“流れて”消える */
-@keyframes dust {
-  0%   { opacity: 0; transform: translateY(-12px); }
-  22%  { opacity: 0.55; }
-  60%  { opacity: 0.22; transform: translateY(16px); }
-  100% { opacity: 0; transform: translateY(26px); }
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(120px) rotate(40deg);
+    opacity: 0;
+  }
 }
