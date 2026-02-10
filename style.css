@@ -1,136 +1,194 @@
-:root {
-  --gold: #c8b36a;
-  --rice: #f6f1ea;
-  --ink:  #2b2b2b;
+:root{
+  --gold:#c8b36a;
+  --rice:#f6f1ea;
+  --ink:#2b2b2b;
 }
 
-* { box-sizing: border-box; }
+*{ box-sizing:border-box; }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #000;
+html,body{
+  margin:0; padding:0; height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  background:#000;
 }
 
-body {
-  display: flex;
-  justify-content: center;
+body{ display:flex; justify-content:center; }
+
+.container{
+  width:100%;
+  max-width:430px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+
+  background-image:url("bg.png.PNG");
+  background-size:cover;
+  background-position:center 60%;
+  background-repeat:no-repeat;
+  background-color:var(--rice);
+
+  text-align:center;
+  padding:72px 24px 32px;
+
+  position:relative;
+  overflow:hidden;
+
+  animation:intro .9s ease-out both;
 }
 
-/* ===== Container ===== */
-.container {
-  width: 100%;
-  max-width: 430px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* ====== 上品な衝撃の核 ======
+   1) 斜めに走る“金の光” (shimmer)
+   2) 極薄の金箔テクスチャ (粒は見せない)
+   3) 0.65秒で消える（イベント感）
+*/
 
-  background-image: url("bg.png.PNG");
-  background-size: cover;
-  background-position: center 60%;
-  background-repeat: no-repeat;
-  background-color: var(--rice);
+/* 斜めの光（主役） */
+.container::before{
+  content:"";
+  position:absolute;
+  inset:-30%;
+  pointer-events:none;
+  z-index:0;
 
-  text-align: center;
-  padding: 72px 24px 32px;
-  position: relative;
-  overflow: hidden;
+  /* 光の帯：太すぎない */
+  background:
+    linear-gradient(115deg,
+      transparent 0%,
+      transparent 42%,
+      rgba(255,255,255,0.00) 46%,
+      rgba(255,255,255,0.22) 49%,
+      rgba(200,179,106,0.35) 51%,
+      rgba(255,255,255,0.18) 53%,
+      rgba(255,255,255,0.00) 56%,
+      transparent 60%,
+      transparent 100%);
 
-  animation: intro 0.9s ease-out both;
+  mix-blend-mode:screen;
+  opacity:0;
+  transform:translateX(-18%) translateY(-10%) rotate(0deg);
 }
 
-/* ===== 金箔バースト（通常は完全に非表示） ===== */
-.container::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  pointer-events: none;
-  z-index: 0;
+/* 極薄の金箔“気配”（粒を見せない） */
+.container::after{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  pointer-events:none;
+  z-index:0;
 
-  background-image:
-    radial-gradient(26px 16px at 20% 30%, rgba(200,179,106,0.85) 0 52%, transparent 60%),
-    radial-gradient(22px 14px at 40% 20%, rgba(200,179,106,0.75) 0 50%, transparent 60%),
-    radial-gradient(30px 18px at 60% 35%, rgba(200,179,106,0.80) 0 54%, transparent 62%),
-    radial-gradient(24px 14px at 75% 25%, rgba(200,179,106,0.70) 0 48%, transparent 60%),
-    conic-gradient(from 20deg at 30% 65%, rgba(200,179,106,0.65) 0 18deg, transparent 18deg 360deg),
-    conic-gradient(from -15deg at 70% 70%, rgba(200,179,106,0.60) 0 16deg, transparent 16deg 360deg);
+  /* 粒を見せない：極細の筋＋薄いノイズっぽさ */
+  background:
+    repeating-linear-gradient(125deg,
+      rgba(200,179,106,0.06) 0 1px,
+      transparent 1px 10px),
+    radial-gradient(circle at 30% 25%, rgba(200,179,106,0.10), transparent 55%),
+    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08), transparent 60%);
 
-  mix-blend-mode: overlay;
-  filter: blur(0.2px);
-
-  opacity: 0;
-  transform: translateY(-30px) scale(0.98);
+  mix-blend-mode:overlay;
+  filter:blur(.35px);
+  opacity:0;
+  transform:translateY(-6px);
 }
 
-/* ===== バースト発動 ===== */
-.container.burst::before {
-  animation: burst 1.2s ease-out forwards;
+/* 発動：1回だけ */
+.container.shimmer::before{
+  animation:shimmer .65s ease-out forwards;
+}
+.container.shimmer::after{
+  animation:goldveil .65s ease-out forwards;
 }
 
-/* 前面要素 */
-h1, .tagline, .buttons {
-  position: relative;
-  z-index: 1;
+/* 前面 */
+h1,.tagline,.buttons{ position:relative; z-index:1; }
+
+/* ===== Title ===== */
+h1{
+  margin:0;
+  font-size:28px;
+  letter-spacing:.22em;
+  color:var(--gold);
+  animation:titleIn 1.05s ease-out both;
+  animation-delay:.10s;
 }
 
-/* ===== Text ===== */
-h1 {
-  margin: 0;
-  font-size: 28px;
-  letter-spacing: 0.22em;
-  color: var(--gold);
-}
-
-.tagline {
-  margin-top: 14px;
-  font-size: 12px;
-  letter-spacing: 0.35em;
-  color: rgba(43, 43, 43, 0.6);
+.tagline{
+  margin-top:14px;
+  font-size:12px;
+  letter-spacing:.35em;
+  color:rgba(43,43,43,.6);
+  animation:titleIn 1.05s ease-out both;
+  animation-delay:.18s;
 }
 
 /* ===== Buttons ===== */
-.buttons {
-  margin-top: auto;
-  padding-bottom: 32px;
+.buttons{
+  margin-top:auto;
+  padding-bottom:32px;
+  animation:buttonsIn 1.05s ease-out both;
+  animation-delay:.30s;
 }
 
-.button-primary,
-.button-secondary {
-  display: block;
-  width: 100%;
-  padding: 14px 0;
-  border-radius: 999px;
-  text-decoration: none;
-  letter-spacing: 0.25em;
+.button-primary,.button-secondary{
+  display:block;
+  width:100%;
+  padding:14px 0;
+  border-radius:999px;
+  text-decoration:none;
+  letter-spacing:.25em;
 }
 
-.button-primary {
-  margin-bottom: 16px;
-  background: var(--gold);
-  color: #ffffff;
-  font-size: 14px;
+.button-primary{
+  margin-bottom:16px;
+  background:var(--gold);
+  color:#fff;
+  font-size:14px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.button-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 22px rgba(0,0,0,.26);
 }
 
-.button-secondary {
-  background: rgba(246, 241, 234, 0.82);
-  color: var(--ink);
-  font-size: 13px;
-  letter-spacing: 0.3em;
-  border: 1px solid var(--gold);
+.button-secondary{
+  background:rgba(246,241,234,.82);
+  color:var(--ink);
+  font-size:13px;
+  letter-spacing:.30em;
+  border:1px solid var(--gold);
+  transition:background .25s ease, color .25s ease;
+}
+.button-secondary:hover{
+  background:var(--gold);
+  color:#fff;
 }
 
-/* ===== Animations ===== */
-@keyframes intro {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ===== Anim ===== */
+@keyframes intro{
+  from{ opacity:0; transform:translateY(6px); }
+  to{ opacity:1; transform:translateY(0); }
 }
 
-/* 一瞬の衝撃 */
-@keyframes burst {
-  0%   { opacity: 0; transform: translateY(-30px) scale(0.95); }
-  25%  { opacity: 0.9; transform: translateY(0) scale(1.02); }
-  60%  { opacity: 0.5; transform: translateY(22px) scale(1.01); }
-  100% { opacity: 0; transform: translateY(38px) scale(1); }
+@keyframes titleIn{
+  from{ opacity:0; transform:translateY(4px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes buttonsIn{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* 斜めの光が“スッ”と走って消える */
+@keyframes shimmer{
+  0%   { opacity:0; transform:translateX(-22%) translateY(-12%); }
+  35%  { opacity:.85; }
+  70%  { opacity:.25; transform:translateX(10%) translateY(6%); }
+  100% { opacity:0; transform:translateX(22%) translateY(12%); }
+}
+
+/* 金箔の“気配”が一瞬だけ乗る */
+@keyframes goldveil{
+  0%   { opacity:0; transform:translateY(-8px); }
+  40%  { opacity:.55; }
+  100% { opacity:0; transform:translateY(10px); }
 }
