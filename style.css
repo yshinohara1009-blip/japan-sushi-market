@@ -28,7 +28,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  background-image: url("bg.png.PNG"); /* 今使ってる背景 */
+  background-image: url("bg.png.PNG");
   background-size: cover;
   background-position: center 60%;
   background-repeat: no-repeat;
@@ -40,45 +40,39 @@ body {
   position: relative;
   overflow: hidden;
 
-  /* 登場演出 */
   animation: intro 0.9s ease-out both;
 }
 
-/* ===== Gold flakes overlay =====
-   ・背景を壊さない超薄い金箔
-   ・たまに流れる（常時ギラつかない）
-*/
+/* ===== 金箔（確実に見える） ===== */
 .container::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -10%;
   pointer-events: none;
   z-index: 0;
 
-  /* 金箔ドット（大小混在） */
   background-image:
-    radial-gradient(circle, rgba(200,179,106,0.22) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(200,179,106,0.16) 0 1.5px, transparent 3px),
-    radial-gradient(circle, rgba(200,179,106,0.10) 0 2px, transparent 4px);
+    radial-gradient(circle, rgba(200,179,106,0.45) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(200,179,106,0.35) 0 1.5px, transparent 3px),
+    radial-gradient(circle, rgba(200,179,106,0.25) 0 2px, transparent 4px);
 
   background-size:
-    220px 220px,
-    320px 320px,
-    520px 520px;
+    180px 180px,
+    260px 260px,
+    420px 420px;
 
   background-position:
     0 0,
-    80px 120px,
-    160px 40px;
+    120px 80px,
+    240px 160px;
 
-  opacity: 0;               /* 通常は見えない */
-  filter: blur(0.2px);      /* 粒立ちを少し丸める */
-  mix-blend-mode: multiply; /* 画像に自然に馴染ませる */
+  mix-blend-mode: multiply;
+  filter: blur(0.3px);
 
-  animation: flakes 10.5s ease-in-out infinite;
+  animation: flakes 6.8s linear infinite;
 }
 
-/* もう1レイヤー（ほんのり光沢） */
+/* ===== 微光 ===== */
 .container::after {
   content: "";
   position: absolute;
@@ -86,15 +80,17 @@ body {
   pointer-events: none;
   z-index: 0;
 
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.10), transparent 45%),
-              radial-gradient(circle at 70% 60%, rgba(200,179,106,0.10), transparent 55%);
-  opacity: 0.0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.22), transparent 40%),
+    radial-gradient(circle at 70% 65%, rgba(200,179,106,0.18), transparent 55%);
 
-  animation: glow 12s ease-in-out infinite;
+  animation: glow 9s ease-in-out infinite;
 }
 
-/* 中身は金箔より前に出す */
-h1, .tagline, .buttons { position: relative; z-index: 1; }
+h1, .tagline, .buttons {
+  position: relative;
+  z-index: 1;
+}
 
 /* ===== Title ===== */
 h1 {
@@ -102,7 +98,6 @@ h1 {
   font-size: 28px;
   letter-spacing: 0.22em;
   color: var(--gold);
-
   animation: titleIn 1.1s ease-out both;
   animation-delay: 0.12s;
 }
@@ -113,7 +108,6 @@ h1 {
   font-size: 12px;
   letter-spacing: 0.35em;
   color: rgba(43, 43, 43, 0.6);
-
   animation: titleIn 1.1s ease-out both;
   animation-delay: 0.20s;
 }
@@ -122,7 +116,6 @@ h1 {
 .buttons {
   margin-top: auto;
   padding-bottom: 32px;
-
   animation: buttonsIn 1.1s ease-out both;
   animation-delay: 0.35s;
 }
@@ -143,23 +136,21 @@ h1 {
   background: var(--gold);
   color: #ffffff;
   font-size: 14px;
-
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .button-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.28);
 }
 
 /* Secondary */
 .button-secondary {
-  background: rgba(246, 241, 234, 0.75);
+  background: rgba(246, 241, 234, 0.8);
   color: var(--ink);
   font-size: 13px;
   letter-spacing: 0.3em;
   border: 1px solid var(--gold);
-
   transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -169,59 +160,39 @@ h1 {
 }
 
 /* ===== Animations ===== */
-
-/* ページ全体 */
 @keyframes intro {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* タイトル・タグライン */
 @keyframes titleIn {
   from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ボタン */
 @keyframes buttonsIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* 金箔：普段は見えない→時々ふわっと現れて流れる */
+/* 金箔：必ず降る */
 @keyframes flakes {
-  0%   { opacity: 0; transform: translateY(0) translateX(0); }
-  12%  { opacity: 0; }
-  18%  { opacity: 0.55; transform: translateY(0) translateX(0); }
-  34%  { opacity: 0.35; transform: translateY(18px) translateX(10px); }
-  42%  { opacity: 0.0; transform: translateY(28px) translateX(14px); }
+  0%   { transform: translateY(-20px) translateX(0); opacity: 0.0; }
+  10%  { opacity: 0.7; }
+  30%  { transform: translateY(40px) translateX(14px); opacity: 0.4; }
+  45%  { opacity: 0.0; }
 
-  55%  { opacity: 0; transform: translateY(0) translateX(0); }
-  62%  { opacity: 0.40; transform: translateY(0) translateX(0); }
-  78%  { opacity: 0.22; transform: translateY(14px) translateX(-8px); }
-  86%  { opacity: 0; transform: translateY(22px) translateX(-12px); }
-
-  100% { opacity: 0; transform: translateY(0) translateX(0); }
+  60%  { transform: translateY(-20px) translateX(0); opacity: 0.0; }
+  70%  { opacity: 0.6; }
+  90%  { transform: translateY(36px) translateX(-12px); opacity: 0.3; }
+  100% { opacity: 0.0; }
 }
 
-/* 光沢：さらに薄く、時々だけ */
+/* 光 */
 @keyframes glow {
-  0%, 20%  { opacity: 0; }
-  28%      { opacity: 0.18; }
-  44%      { opacity: 0; }
-  60%      { opacity: 0.12; }
-  74%      { opacity: 0; }
-  100%     { opacity: 0; }
-}
-
-/* ユーザーが「視差や動き抑制」を設定している場合は止める */
-@media (prefers-reduced-motion: reduce) {
-  .container,
-  h1,
-  .tagline,
-  .buttons,
-  .container::before,
-  .container::after {
-    animation: none !important;
-  }
+  0%, 20% { opacity: 0; }
+  30%     { opacity: 0.25; }
+  55%     { opacity: 0; }
+  70%     { opacity: 0.18; }
+  100%    { opacity: 0; }
 }
