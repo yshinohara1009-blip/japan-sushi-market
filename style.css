@@ -104,21 +104,22 @@ h1 {
   color: #fff;
 }
 
-/* ===== Entry Shock (first visit only) ===== */
+/* ===== Entry Shock ===== */
 .shock {
   position: fixed;
   inset: 0;
-  z-index: 999;
+  z-index: 9999;
   pointer-events: none;
   opacity: 0;
 }
 
-/* ブラックフレーム */
+/* “出ない”を防ぐ：is-on時に確実に黒背景が入る */
 .shock.is-on {
-  animation: shockFlash 0.45s ease-out both;
+  opacity: 1;
+  background: rgba(7,7,7,0.92);
+  animation: shockFade 0.45s ease-out both;
 }
 
-/* “欠け”の影（2時方向） */
 .shock__bite {
   position: absolute;
   inset: 0;
@@ -127,29 +128,19 @@ h1 {
       transparent 0 62px,
       rgba(0,0,0,0.65) 66px,
       rgba(0,0,0,0.85) 110px,
-      transparent 140px),
-    linear-gradient(0deg, rgba(0,0,0,0.85), rgba(0,0,0,0.85));
+      transparent 140px);
   mix-blend-mode: multiply;
   opacity: 0;
   transform: translateY(-6px);
   animation: biteHit 0.45s ease-out both;
 }
 
-/* フィルムグレイン（派手じゃない） */
 .shock__grain {
   position: absolute;
   inset: -20%;
   background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255,255,255,0.02) 0 1px,
-      transparent 1px 7px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255,255,255,0.015) 0 1px,
-      transparent 1px 9px
-    );
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(0deg,  rgba(255,255,255,0.015) 0 1px, transparent 1px 9px);
   opacity: 0;
   animation: grain 0.45s ease-out both;
 }
@@ -168,15 +159,13 @@ h1 {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* 入口の“異変”：ブラックが一瞬だけ入って消える */
-@keyframes shockFlash {
-  0%   { opacity: 0; background: transparent; }
-  18%  { opacity: 1; background: rgba(7,7,7,0.92); }
-  55%  { opacity: 0.35; background: rgba(7,7,7,0.35); }
-  100% { opacity: 0; background: transparent; }
+@keyframes shockFade {
+  0%   { opacity: 0; }
+  18%  { opacity: 1; }
+  55%  { opacity: 0.35; }
+  100% { opacity: 0; }
 }
 
-/* 欠けの影が“入って消える” */
 @keyframes biteHit {
   0%   { opacity: 0; transform: translateY(-10px); }
   22%  { opacity: 1; transform: translateY(0); }
@@ -184,7 +173,6 @@ h1 {
   100% { opacity: 0; transform: translateY(14px); }
 }
 
-/* グレインは薄く */
 @keyframes grain {
   0%   { opacity: 0; transform: translateY(-6px); }
   25%  { opacity: 0.28; transform: translateY(0); }
