@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=burst-final" />
+  <link rel="stylesheet" href="style.css?v=shimmer1" />
 </head>
 <body>
   <div class="container" id="container">
@@ -25,13 +25,13 @@
   </div>
 
   <script>
-    // 一度だけ金箔バースト
-    if (!localStorage.getItem("jsm_burst_seen")) {
+    // 初回アクセスのみ：一瞬の“シマー”
+    if (!localStorage.getItem("jsm_shimmer_seen")) {
       window.addEventListener("load", () => {
         setTimeout(() => {
-          document.getElementById("container").classList.add("burst");
-          localStorage.setItem("jsm_burst_seen", "1");
-        }, 600); // 入場後0.6秒
+          document.getElementById("container").classList.add("shimmer");
+          localStorage.setItem("jsm_shimmer_seen", "1");
+        }, 450); // 0.45秒後：気づく人だけ気づく
       });
     }
   </script>
