@@ -1,194 +1,192 @@
-:root{
-  --gold:#c8b36a;
-  --rice:#f6f1ea;
-  --ink:#2b2b2b;
+:root {
+  --gold: #c8b36a;
+  --rice: #f6f1ea;
+  --ink:  #2b2b2b;
+  --black: #070707;
 }
 
-*{ box-sizing:border-box; }
+* { box-sizing: border-box; }
 
-html,body{
-  margin:0; padding:0; height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-  background:#000;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #000;
 }
 
-body{ display:flex; justify-content:center; }
-
-.container{
-  width:100%;
-  max-width:430px;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-
-  background-image:url("bg.png.PNG");
-  background-size:cover;
-  background-position:center 60%;
-  background-repeat:no-repeat;
-  background-color:var(--rice);
-
-  text-align:center;
-  padding:72px 24px 32px;
-
-  position:relative;
-  overflow:hidden;
-
-  animation:intro .9s ease-out both;
+body {
+  display: flex;
+  justify-content: center;
 }
 
-/* ====== 上品な衝撃の核 ======
-   1) 斜めに走る“金の光” (shimmer)
-   2) 極薄の金箔テクスチャ (粒は見せない)
-   3) 0.65秒で消える（イベント感）
-*/
+/* ===== Main Container ===== */
+.container {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-/* 斜めの光（主役） */
-.container::before{
-  content:"";
-  position:absolute;
-  inset:-30%;
-  pointer-events:none;
-  z-index:0;
+  background-image: url("bg.png.PNG");
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  background-color: var(--rice);
 
-  /* 光の帯：太すぎない */
+  text-align: center;
+  padding: 72px 24px 32px;
+
+  position: relative;
+  overflow: hidden;
+
+  animation: intro 0.9s ease-out both;
+}
+
+h1, .tagline, .buttons { position: relative; z-index: 1; }
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  animation: titleIn 1.05s ease-out both;
+  animation-delay: 0.10s;
+}
+
+.tagline {
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: rgba(43, 43, 43, 0.6);
+  animation: titleIn 1.05s ease-out both;
+  animation-delay: 0.18s;
+}
+
+.buttons {
+  margin-top: auto;
+  padding-bottom: 32px;
+  animation: buttonsIn 1.05s ease-out both;
+  animation-delay: 0.30s;
+}
+
+.button-primary, .button-secondary {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.25em;
+}
+
+.button-primary {
+  margin-bottom: 16px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.26);
+}
+
+.button-secondary {
+  background: rgba(246, 241, 234, 0.82);
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0.30em;
+  border: 1px solid var(--gold);
+  transition: background 0.25s ease, color 0.25s ease;
+}
+.button-secondary:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ===== Entry Shock (first visit only) ===== */
+.shock {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* ブラックフレーム */
+.shock.is-on {
+  animation: shockFlash 0.45s ease-out both;
+}
+
+/* “欠け”の影（2時方向） */
+.shock__bite {
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(115deg,
-      transparent 0%,
-      transparent 42%,
-      rgba(255,255,255,0.00) 46%,
-      rgba(255,255,255,0.22) 49%,
-      rgba(200,179,106,0.35) 51%,
-      rgba(255,255,255,0.18) 53%,
-      rgba(255,255,255,0.00) 56%,
-      transparent 60%,
-      transparent 100%);
-
-  mix-blend-mode:screen;
-  opacity:0;
-  transform:translateX(-18%) translateY(-10%) rotate(0deg);
+    radial-gradient(circle at 78% 22%,
+      transparent 0 62px,
+      rgba(0,0,0,0.65) 66px,
+      rgba(0,0,0,0.85) 110px,
+      transparent 140px),
+    linear-gradient(0deg, rgba(0,0,0,0.85), rgba(0,0,0,0.85));
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: translateY(-6px);
+  animation: biteHit 0.45s ease-out both;
 }
 
-/* 極薄の金箔“気配”（粒を見せない） */
-.container::after{
-  content:"";
-  position:absolute;
-  inset:-12%;
-  pointer-events:none;
-  z-index:0;
-
-  /* 粒を見せない：極細の筋＋薄いノイズっぽさ */
+/* フィルムグレイン（派手じゃない） */
+.shock__grain {
+  position: absolute;
+  inset: -20%;
   background:
-    repeating-linear-gradient(125deg,
-      rgba(200,179,106,0.06) 0 1px,
-      transparent 1px 10px),
-    radial-gradient(circle at 30% 25%, rgba(200,179,106,0.10), transparent 55%),
-    radial-gradient(circle at 70% 70%, rgba(255,255,255,0.08), transparent 60%);
-
-  mix-blend-mode:overlay;
-  filter:blur(.35px);
-  opacity:0;
-  transform:translateY(-6px);
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.02) 0 1px,
+      transparent 1px 7px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.015) 0 1px,
+      transparent 1px 9px
+    );
+  opacity: 0;
+  animation: grain 0.45s ease-out both;
 }
 
-/* 発動：1回だけ */
-.container.shimmer::before{
-  animation:shimmer .65s ease-out forwards;
+/* ===== Animations ===== */
+@keyframes intro {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-.container.shimmer::after{
-  animation:goldveil .65s ease-out forwards;
+@keyframes titleIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-/* 前面 */
-h1,.tagline,.buttons{ position:relative; z-index:1; }
-
-/* ===== Title ===== */
-h1{
-  margin:0;
-  font-size:28px;
-  letter-spacing:.22em;
-  color:var(--gold);
-  animation:titleIn 1.05s ease-out both;
-  animation-delay:.10s;
+@keyframes buttonsIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.tagline{
-  margin-top:14px;
-  font-size:12px;
-  letter-spacing:.35em;
-  color:rgba(43,43,43,.6);
-  animation:titleIn 1.05s ease-out both;
-  animation-delay:.18s;
+/* 入口の“異変”：ブラックが一瞬だけ入って消える */
+@keyframes shockFlash {
+  0%   { opacity: 0; background: transparent; }
+  18%  { opacity: 1; background: rgba(7,7,7,0.92); }
+  55%  { opacity: 0.35; background: rgba(7,7,7,0.35); }
+  100% { opacity: 0; background: transparent; }
 }
 
-/* ===== Buttons ===== */
-.buttons{
-  margin-top:auto;
-  padding-bottom:32px;
-  animation:buttonsIn 1.05s ease-out both;
-  animation-delay:.30s;
+/* 欠けの影が“入って消える” */
+@keyframes biteHit {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  22%  { opacity: 1; transform: translateY(0); }
+  60%  { opacity: 0.35; transform: translateY(8px); }
+  100% { opacity: 0; transform: translateY(14px); }
 }
 
-.button-primary,.button-secondary{
-  display:block;
-  width:100%;
-  padding:14px 0;
-  border-radius:999px;
-  text-decoration:none;
-  letter-spacing:.25em;
-}
-
-.button-primary{
-  margin-bottom:16px;
-  background:var(--gold);
-  color:#fff;
-  font-size:14px;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
-.button-primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 22px rgba(0,0,0,.26);
-}
-
-.button-secondary{
-  background:rgba(246,241,234,.82);
-  color:var(--ink);
-  font-size:13px;
-  letter-spacing:.30em;
-  border:1px solid var(--gold);
-  transition:background .25s ease, color .25s ease;
-}
-.button-secondary:hover{
-  background:var(--gold);
-  color:#fff;
-}
-
-/* ===== Anim ===== */
-@keyframes intro{
-  from{ opacity:0; transform:translateY(6px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-
-@keyframes titleIn{
-  from{ opacity:0; transform:translateY(4px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-
-@keyframes buttonsIn{
-  from{ opacity:0; transform:translateY(8px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-
-/* 斜めの光が“スッ”と走って消える */
-@keyframes shimmer{
-  0%   { opacity:0; transform:translateX(-22%) translateY(-12%); }
-  35%  { opacity:.85; }
-  70%  { opacity:.25; transform:translateX(10%) translateY(6%); }
-  100% { opacity:0; transform:translateX(22%) translateY(12%); }
-}
-
-/* 金箔の“気配”が一瞬だけ乗る */
-@keyframes goldveil{
-  0%   { opacity:0; transform:translateY(-8px); }
-  40%  { opacity:.55; }
-  100% { opacity:0; transform:translateY(10px); }
+/* グレインは薄く */
+@keyframes grain {
+  0%   { opacity: 0; transform: translateY(-6px); }
+  25%  { opacity: 0.28; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
 }
