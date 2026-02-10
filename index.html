@@ -4,17 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-  <!-- キャッシュ回避 -->
-  <link rel="stylesheet" href="style.css?v=gold-final" />
+  <link rel="stylesheet" href="style.css?v=burst-final" />
 </head>
 <body>
-  <div class="container">
+  <div class="container" id="container">
     <h1>JAPAN SUSHI<br>MARKET</h1>
     <div class="tagline">EAT. TRADE. BURN.</div>
 
     <div class="buttons">
       <a href="#" class="button-primary">ENTER MARKET</a>
-
       <a
         href="https://gaudy-fountain-233.notion.site/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
         class="button-secondary"
@@ -25,5 +23,17 @@
       </a>
     </div>
   </div>
+
+  <script>
+    // 一度だけ金箔バースト
+    if (!localStorage.getItem("jsm_burst_seen")) {
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("container").classList.add("burst");
+          localStorage.setItem("jsm_burst_seen", "1");
+        }, 600); // 入場後0.6秒
+      });
+    }
+  </script>
 </body>
 </html>
