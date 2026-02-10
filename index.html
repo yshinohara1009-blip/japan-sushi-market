@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=shock1" />
+  <link rel="stylesheet" href="style.css?v=shock2" />
 </head>
 <body>
-  <!-- 入口の衝撃（初回だけ表示） -->
+  <!-- 入口の衝撃（初回だけ表示 / ?shock=1で強制表示） -->
   <div class="shock" id="shock" aria-hidden="true">
     <div class="shock__bite"></div>
     <div class="shock__grain"></div>
@@ -31,18 +31,30 @@
   </div>
 
   <script>
-    // 初回アクセスのみ：0.45秒の“異変”を一回だけ
-    if (!localStorage.getItem("jsm_entry_shock_seen")) {
+    (function () {
+      const VERSION = "shock2"; // ←更新ごとに変えると“また1回出る”
+      const KEY = `jsm_entry_shock_seen_${VERSION}`;
+
+      const params = new URLSearchParams(location.search);
+      const force = params.get("shock") === "1";      // ?shock=1 で強制表示
+      const reset = params.get("reset") === "1";      // ?reset=1 で見た扱い解除
+
+      if (reset) localStorage.removeItem(KEY);
+
+      const alreadySeen = localStorage.getItem(KEY) === "1";
+      if (alreadySeen && !force) return;
+
       window.addEventListener("load", () => {
         const shock = document.getElementById("shock");
+
         setTimeout(() => {
           shock.classList.add("is-on");
-          localStorage.setItem("jsm_entry_shock_seen", "1");
-          // 念のためすぐ解除（以降完全に無効化）
+          localStorage.setItem(KEY, "1");
+
           setTimeout(() => shock.classList.remove("is-on"), 650);
         }, 220);
       });
-    }
+    })();
   </script>
 </body>
 </html>
