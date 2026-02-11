@@ -4,15 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=gold-snow1" />
+  <link rel="stylesheet" href="style.css?v=gold-snow2" />
 </head>
 <body>
   <div class="container" id="container">
     <h1>JAPAN SUSHI<br>MARKET</h1>
     <div class="tagline">EAT. TRADE. BURN.</div>
 
+    <div class="jsm-block" aria-hidden="true">
+      <div class="jsm-title">Home of $JSM.</div>
+      <div class="jsm-sub">Be ready for the next burn.</div>
+    </div>
+
     <div class="buttons">
-      <a href="#" class="button-primary">ENTER MARKET</a>
+      <!-- BUY NOW -->
+      <a href="#" class="button-buy" id="buyBtn">
+        <div class="buy-label">BUY NOW</div>
+        <div class="buy-sub">Swapped via Jupiter</div>
+      </a>
+
+      <!-- ENTER -->
+      <a href="#" class="button-primary" id="enterBtn">ENTER MARKET</a>
+
+      <!-- LOG -->
       <a
         href="https://gaudy-fountain-233.notion.site/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
         class="button-secondary"
@@ -25,10 +39,18 @@
   </div>
 
   <script>
+    // ====== LINK SETUP（あとで貼り替えるだけ）======
+    const BUY_URL   = "#"; // ← Jupiterリンク
+    const ENTER_URL = "#"; // ← 例: "/market/"
+
+    document.getElementById("buyBtn").setAttribute("href", BUY_URL);
+    document.getElementById("enterBtn").setAttribute("href", ENTER_URL);
+
+    // ====== GOLD SNOW（そのまま）======
     const container = document.getElementById("container");
 
     function spawnGoldSnow(x, y) {
-      for (let i = 0; i < 14; i++) {
+      for (let i = 0; i < 14; i) {
         const flake = document.createElement("span");
         flake.className = "gold-flake";
 
@@ -39,9 +61,7 @@
 
         container.appendChild(flake);
 
-        flake.addEventListener("animationend", () => {
-          flake.remove();
-        });
+        flake.addEventListener("animationend", () => flake.remove());
       }
     }
 
