@@ -4,15 +4,9 @@
   --line: rgba(200,179,106,0.55);
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-html, body{
-  height:100%;
-}
+html, body{ height:100%; }
 
 body{
   font-family: ui-serif, Georgia, "Times New Roman", serif;
@@ -22,7 +16,7 @@ body{
   background:#000;
 }
 
-/* ===== HERO (背景 + 縦レイアウト) ===== */
+/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   width:100%;
@@ -34,7 +28,6 @@ body{
   align-items:center;
   text-align:center;
 
-  /* iPhone Safe Area 対応（下ボタン押しやすい） */
   padding-top: calc(56px + env(safe-area-inset-top));
   padding-left: 22px;
   padding-right: 22px;
@@ -59,7 +52,7 @@ body{
   color: rgba(20,18,16,0.55);
 }
 
-/* ===== BUTTONS (縦並び) ===== */
+/* ===== BUTTONS ===== */
 .bottom{
   width: min(560px, 92vw);
   display:flex;
@@ -94,9 +87,7 @@ body{
   opacity:0.92;
 }
 
-/* ===== Premium Skin (Metal + Glass) ===== */
-
-/* ENTER MARKET : metallic gold pill */
+/* ===== ENTER MARKET : METALLIC GOLD ===== */
 .btn.primary{
   background: linear-gradient(
     180deg,
@@ -114,7 +105,6 @@ body{
     inset 0 -2px 0 rgba(0,0,0,0.14);
 }
 
-/* 外周リング */
 .btn.primary::after{
   content:"";
   position:absolute;
@@ -124,7 +114,6 @@ body{
   pointer-events:none;
 }
 
-/* 光沢スワイプ */
 .btn.primary::before{
   content:"";
   position:absolute;
@@ -151,7 +140,7 @@ body{
   opacity:0.95;
 }
 
-/* VIEW LOG : glass pill */
+/* ===== VIEW LOG : GLASS ===== */
 .btn.ghost{
   background: rgba(255,255,255,0.55);
   color: rgba(40, 36, 28, 0.55);
@@ -163,7 +152,6 @@ body{
   backdrop-filter: blur(10px);
 }
 
-/* ガラス縁 */
 .btn.ghost::after{
   content:"";
   position:absolute;
@@ -173,7 +161,6 @@ body{
   pointer-events:none;
 }
 
-/* ガラスのハイライト */
 .btn.ghost::before{
   content:"";
   position:absolute;
