@@ -22,7 +22,6 @@ body{
   background:#000;
 }
 
-/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   width:100%;
@@ -34,17 +33,13 @@ body{
   align-items:center;
   text-align:center;
 
-  /* iPhone Safe Area 対応 */
   padding-top: calc(56px + env(safe-area-inset-top));
   padding-left: 22px;
   padding-right: 22px;
   padding-bottom: calc(60px + env(safe-area-inset-bottom));
 }
 
-/* ===== TITLE ===== */
-.top{
-  width:100%;
-}
+.top{ width:100%; }
 
 .brand{
   font-weight:600;
@@ -61,7 +56,6 @@ body{
   color: rgba(20,18,16,0.55);
 }
 
-/* ===== BUTTONS ===== */
 .bottom{
   width: min(560px, 92vw);
   display:flex;
@@ -87,13 +81,11 @@ body{
   opacity:0.92;
 }
 
-/* GOLD BUTTON */
 .btn.primary{
   background: rgba(200,179,106,0.95);
   color: rgba(255,255,255,0.92);
 }
 
-/* LIGHT BUTTON */
 .btn.ghost{
   background: rgba(246,241,234,0.80);
   color: rgba(20,18,16,0.70);
