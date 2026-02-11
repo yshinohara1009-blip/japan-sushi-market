@@ -1,19 +1,102 @@
-/* ===== Button Premium Skin (Metal + Glass) ===== */
+:root{
+  --gold: #c8b36a;
+  --ink: rgba(20, 18, 16, 0.78);
+  --line: rgba(200,179,106,0.55);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html, body{
+  height:100%;
+}
+
+body{
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background:#000;
+}
+
+/* ===== HERO (背景 + 縦レイアウト) ===== */
+.hero{
+  min-height:100vh;
+  width:100%;
+  background: url("bg.png.PNG") center center / cover no-repeat;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+
+  /* iPhone Safe Area 対応（下ボタン押しやすい） */
+  padding-top: calc(56px + env(safe-area-inset-top));
+  padding-left: 22px;
+  padding-right: 22px;
+  padding-bottom: calc(60px + env(safe-area-inset-bottom));
+}
+
+/* ===== TITLE ===== */
+.top{ width:100%; }
+
+.brand{
+  font-weight:600;
+  letter-spacing:6px;
+  line-height:1.05;
+  font-size: clamp(28px, 6vw, 44px);
+  color: rgba(200,179,106,0.9);
+}
+
+.tagline{
+  margin-top:14px;
+  letter-spacing:6px;
+  font-size:13px;
+  color: rgba(20,18,16,0.55);
+}
+
+/* ===== BUTTONS (縦並び) ===== */
+.bottom{
+  width: min(560px, 92vw);
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
 
 .btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  height:56px;
+  border-radius:28px;
+
+  text-decoration:none;
+  letter-spacing:7px;
+  font-size:13px;
+  font-weight:500;
+
+  transition: transform .08s ease, opacity .2s ease, filter .2s ease;
+  user-select:none;
+
   position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
   transform: translateZ(0);
 }
 
-/* 文字を少しだけ上品に */
-.btn{
-  letter-spacing: 7px;
-  font-weight: 500;
+.btn:active{
+  transform: translateY(1px);
+  opacity:0.92;
 }
 
-/* ===== ENTER MARKET : metallic gold pill ===== */
+/* ===== Premium Skin (Metal + Glass) ===== */
+
+/* ENTER MARKET : metallic gold pill */
 .btn.primary{
   background: linear-gradient(
     180deg,
@@ -31,7 +114,7 @@
     inset 0 -2px 0 rgba(0,0,0,0.14);
 }
 
-/* 外周の上品な縁取り（ゴールドリング） */
+/* 外周リング */
 .btn.primary::after{
   content:"";
   position:absolute;
@@ -41,14 +124,14 @@
   pointer-events:none;
 }
 
-/* 光沢のスワイプ */
+/* 光沢スワイプ */
 .btn.primary::before{
   content:"";
   position:absolute;
   top:-60%;
   left:-70%;
-  width: 120%;
-  height: 220%;
+  width:120%;
+  height:220%;
   background: linear-gradient(
     90deg,
     rgba(255,255,255,0) 0%,
@@ -58,23 +141,17 @@
     rgba(255,255,255,0) 100%
   );
   transform: rotate(18deg) translateX(-40%);
-  opacity: 0.9;
+  opacity:0.9;
   pointer-events:none;
   transition: transform .65s ease, opacity .65s ease;
 }
 
 .btn.primary:hover::before{
   transform: rotate(18deg) translateX(55%);
-  opacity: 0.95;
+  opacity:0.95;
 }
 
-/* 押した時の沈み */
-.btn.primary:active{
-  transform: translateY(1px);
-  filter: brightness(0.98);
-}
-
-/* ===== VIEW LOG : glass pill ===== */
+/* VIEW LOG : glass pill */
 .btn.ghost{
   background: rgba(255,255,255,0.55);
   color: rgba(40, 36, 28, 0.55);
@@ -86,7 +163,7 @@
   backdrop-filter: blur(10px);
 }
 
-/* ガラスの縁 */
+/* ガラス縁 */
 .btn.ghost::after{
   content:"";
   position:absolute;
@@ -102,8 +179,8 @@
   position:absolute;
   top:-55%;
   left:-65%;
-  width: 120%;
-  height: 220%;
+  width:120%;
+  height:220%;
   background: linear-gradient(
     90deg,
     rgba(255,255,255,0) 0%,
@@ -113,17 +190,12 @@
     rgba(255,255,255,0) 100%
   );
   transform: rotate(18deg) translateX(-40%);
-  opacity: 0.7;
+  opacity:0.7;
   pointer-events:none;
   transition: transform .65s ease, opacity .65s ease;
 }
 
 .btn.ghost:hover::before{
   transform: rotate(18deg) translateX(55%);
-  opacity: 0.75;
-}
-
-.btn.ghost:active{
-  transform: translateY(1px);
-  filter: brightness(0.985);
+  opacity:0.75;
 }
