@@ -1,6 +1,7 @@
 :root{
   --gold: #c8b36a;
   --ink: rgba(20, 18, 16, 0.78);
+  --line: rgba(200,179,106,0.55);
 }
 
 *{
@@ -33,10 +34,11 @@ body{
   align-items:center;
   text-align:center;
 
+  /* iPhone Safe Area 対応（下ボタンが押しやすい） */
   padding-top: calc(56px + env(safe-area-inset-top));
   padding-left: 22px;
   padding-right: 22px;
-  padding-bottom: calc(70px + env(safe-area-inset-bottom));
+  padding-bottom: calc(60px + env(safe-area-inset-bottom));
 }
 
 /* ===== TITLE ===== */
@@ -57,132 +59,40 @@ body{
   color: rgba(20,18,16,0.55);
 }
 
-/* ===== BUTTON WRAPPER ===== */
+/* ===== BUTTONS ===== */
 .bottom{
   width: min(560px, 92vw);
   display:flex;
   flex-direction:column;
-  gap:18px;
+  gap:16px;
 }
 
-/* ===== BASE BUTTON ===== */
 .btn{
   display:flex;
   align-items:center;
   justify-content:center;
-
-  height:60px;
-  border-radius:30px;
-
+  height:56px;
+  border-radius:28px;
   text-decoration:none;
-  letter-spacing:7px;
+  letter-spacing:6px;
   font-size:13px;
-  font-weight:500;
-
-  position:relative;
-  overflow:hidden;
+  transition: 0.2s ease;
   user-select:none;
-
-  transition: transform .08s ease, filter .2s ease;
 }
 
 .btn:active{
   transform: translateY(1px);
+  opacity:0.92;
 }
-
-/* ============================= */
-/* ===== ENTER MARKET GOLD ===== */
-/* ============================= */
 
 .btn.primary{
-  background: linear-gradient(
-    180deg,
-    rgba(255,240,190,1) 0%,
-    rgba(232,196,92,1) 25%,
-    rgba(200,179,106,1) 60%,
-    rgba(150,115,35,1) 100%
-  );
-  color:#ffffff;
-  border:1px solid rgba(130,92,18,0.4);
-
-  box-shadow:
-    0 22px 34px rgba(0,0,0,0.25),
-    inset 0 2px 0 rgba(255,255,255,0.6),
-    inset 0 -3px 0 rgba(0,0,0,0.15);
+  background: rgba(200,179,106,0.95);
+  color: rgba(255,255,255,0.92);
 }
-
-/* 内側の光沢リング */
-.btn.primary::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  border-radius:28px;
-  border:1px solid rgba(255,255,255,0.35);
-  pointer-events:none;
-}
-
-/* 光の反射スワイプ */
-.btn.primary::before{
-  content:"";
-  position:absolute;
-  top:-70%;
-  left:-90%;
-  width:140%;
-  height:260%;
-  background: linear-gradient(
-    90deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.25) 45%,
-    rgba(255,255,255,0.55) 50%,
-    rgba(255,255,255,0.25) 55%,
-    rgba(255,255,255,0) 100%
-  );
-  transform: rotate(18deg) translateX(-35%);
-  opacity:0.9;
-  pointer-events:none;
-  transition: transform .8s ease;
-}
-
-.btn.primary:hover::before{
-  transform: rotate(18deg) translateX(60%);
-}
-
-/* ============================= */
-/* ===== VIEW LOG GLASS ======= */
-/* ============================= */
 
 .btn.ghost{
-  background: rgba(255,255,255,0.15);
-  border:1px solid rgba(255,255,255,0.55);
-
-  box-shadow:
-    0 24px 36px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.85),
-    inset 0 -12px 20px rgba(0,0,0,0.05);
-
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  backdrop-filter: blur(20px) saturate(180%);
-
-  color: rgba(40,36,28,0.65);
+  background: rgba(246,241,234,0.80);
+  color: rgba(20,18,16,0.70);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
 }
-
-/* 上半分の反射 */
-.btn.ghost::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(120% 80% at 20% 0%,
-      rgba(255,255,255,0.6) 0%,
-      rgba(255,255,255,0.2) 40%,
-      rgba(255,255,255,0) 75%);
-  pointer-events:none;
-}
-
-/* 内側の厚みリング */
-.btn.ghost::after{
-  content:"";
-  position:absolute;
-  inset:2px;
-  border-radius:28px;
-  border:1px
