@@ -1,98 +1,29 @@
-:root{
-  --gold: #c8b36a;
-  --ink: rgba(20, 18, 16, 0.78);
-  --line: rgba(200,179,106,0.55);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAPAN SUSHI MARKET</title>
+  <link rel="stylesheet" href="style.css?v=1000">
+</head>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+<body>
+  <div class="hero">
+    <div class="top">
+      <h1 class="brand">JAPAN SUSHI<br>MARKET</h1>
+      <div class="tagline">EAT. TRADE. BURN.</div>
+    </div>
 
-html, body{
-  height:100%;
-}
+    <div class="bottom">
+      <a href="#" class="btn primary">ENTER MARKET</a>
 
-body{
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
-  color: var(--ink);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background:#000;
-}
-
-/* ===== HERO ===== */
-.hero{
-  min-height:100vh;
-  width:100%;
-  background: url("bg.png.PNG") center center / cover no-repeat;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:center;
-  text-align:center;
-
-  /* iPhone Safe Area 対応（下ボタンが押しやすい） */
-  padding-top: calc(56px + env(safe-area-inset-top));
-  padding-left: 22px;
-  padding-right: 22px;
-  padding-bottom: calc(60px + env(safe-area-inset-bottom));
-}
-
-/* ===== TITLE ===== */
-.top{ width:100%; }
-
-.brand{
-  font-weight:600;
-  letter-spacing:6px;
-  line-height:1.05;
-  font-size: clamp(28px, 6vw, 44px);
-  color: rgba(200,179,106,0.9);
-}
-
-.tagline{
-  margin-top:14px;
-  letter-spacing:6px;
-  font-size:13px;
-  color: rgba(20,18,16,0.55);
-}
-
-/* ===== BUTTONS ===== */
-.bottom{
-  width: min(560px, 92vw);
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:56px;
-  border-radius:28px;
-  text-decoration:none;
-  letter-spacing:6px;
-  font-size:13px;
-  transition: 0.2s ease;
-  user-select:none;
-}
-
-.btn:active{
-  transform: translateY(1px);
-  opacity:0.92;
-}
-
-.btn.primary{
-  background: rgba(200,179,106,0.95);
-  color: rgba(255,255,255,0.92);
-}
-
-.btn.ghost{
-  background: rgba(246,241,234,0.80);
-  color: rgba(20,18,16,0.70);
-  border: 1px solid var(--line);
-  backdrop-filter: blur(6px);
-}
+      <a href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
+         class="btn ghost"
+         target="_blank"
+         rel="noopener">
+        VIEW LOG
+      </a>
+    </div>
+  </div>
+</body>
+</html>
