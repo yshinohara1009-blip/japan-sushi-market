@@ -1,181 +1,185 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=gold-snow1" />
+:root {
+  --gold: #c8b36a;
+  --rice: #f6f1ea;
+  --ink:  #2b2b2b;
+}
 
-  <style>
-    /* 既存デザインは壊さず、追加分だけ上書き */
-    .buttons{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      align-items:center;
-    }
+* { box-sizing: border-box; }
 
-    /* $JSMコピー */
-    .jsm-block{
-      margin: 10px 0 10px;
-      text-align:center;
-      user-select:none;
-    }
-    .jsm-title{
-      font-size: clamp(20px, 3.2vw, 28px);
-      letter-spacing: .02em;
-      font-weight: 600;
-      color: rgba(0,0,0,.78);
-    }
-    .jsm-sub{
-      margin-top: 6px;
-      font-size: 14px;
-      letter-spacing: .06em;
-      color: rgba(0,0,0,.55);
-    }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  background: #000;
+}
 
-    /* BUY NOW（横長・丸・黒×金・上品） */
-    .button-buy{
-      position: relative;
-      display:inline-flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      width: min(360px, 86vw);
-      padding: 14px 18px 12px;
-      border-radius: 999px;
-      text-decoration:none;
-      -webkit-tap-highlight-color: transparent;
+body {
+  display: flex;
+  justify-content: center;
+}
 
-      color: #f7efdc;
-      background: radial-gradient(140% 180% at 50% 0%, #1a1a1a 0%, #0c0c0c 55%, #050505 100%);
-      border: 1px solid rgba(200,179,106,.68);
-      box-shadow:
-        0 14px 34px rgba(0,0,0,.22),
-        0 0 0 1px rgba(200,179,106,.14) inset;
-      transition: transform .12s ease, filter .2s ease, box-shadow .2s ease;
-    }
-    .button-buy .buy-label{
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      font-size: 18px;
-      line-height: 1;
-    }
-    .button-buy .buy-sub{
-      margin-top: 7px;
-      font-size: 12px;
-      letter-spacing: .08em;
-      opacity: .78;
-    }
-    .button-buy:hover{ filter: brightness(1.03); }
-    .button-buy:active{ transform: translateY(1px) scale(.995); }
+.container {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
-    /* うっすら金のハイライト（やりすぎない） */
-    .button-buy::after{
-      content:"";
-      position:absolute;
-      inset: 2px 2px auto 2px;
-      height: 44%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, transparent, rgba(231,215,162,.18), transparent);
-      opacity: .9;
-      pointer-events:none;
-      transform: translateX(-25%);
-      animation: shine 3.6s ease-in-out infinite;
-    }
-    @keyframes shine{
-      0%{ transform: translateX(-35%); opacity: .0; }
-      18%{ opacity: .9; }
-      48%{ opacity: .2; }
-      100%{ transform: translateX(35%); opacity: .0; }
-    }
+  background-image: url("bg.png.PNG");
+  background-size: cover;
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  background-color: var(--rice);
 
-    /* 既存ボタンをカプセル感に寄せる（style.css側が丸ならそのまま） */
-    .button-primary, .button-secondary{
-      width: min(360px, 86vw);
-      border-radius: 999px;
-    }
+  text-align: center;
+  padding: 72px 24px 32px;
 
-    /* 一文はBUY直下に置く（上品） */
-    .microcopy{
-      margin-top: 2px;
-      margin-bottom: -2px;
-      font-size: 13px;
-      letter-spacing: .04em;
-      color: rgba(0,0,0,.52);
-      text-align:center;
-      user-select:none;
-    }
-  </style>
-</head>
+  position: relative;
+  overflow: hidden;
+}
 
-<body>
-  <div class="container" id="container">
-    <h1>JAPAN SUSHI<br>MARKET</h1>
-    <div class="tagline">EAT. TRADE. BURN.</div>
+/* ===== テキスト ===== */
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
 
-    <div class="jsm-block" aria-hidden="true">
-      <div class="jsm-title">Home of $JSM.</div>
-      <div class="jsm-sub">Be ready for the next burn.</div>
-    </div>
+.tagline {
+  margin-top: 14px;
+  font-size: 12px;
+  letter-spacing: 0.35em;
+  color: rgba(43, 43, 43, 0.6);
+}
 
-    <div class="buttons">
-      <!-- ▼ここにJupiterリンクを貼る -->
-      <a href="#" class="button-buy" id="buyBtn">
-        <div class="buy-label">BUY NOW</div>
-        <div class="buy-sub">Swapped via Jupiter</div>
-      </a>
+/* ===== $JSMコピー ===== */
+.jsm-block {
+  margin: 14px 0 10px;
+}
 
-      <!-- ▼ここを /market/ にする（まだ無ければ # のままでOK） -->
-      <a href="#" class="button-primary" id="enterBtn">ENTER MARKET</a>
+.jsm-title {
+  font-size: 20px;
+  color: rgba(0,0,0,0.78);
+  letter-spacing: 0.02em;
+}
 
-      <a
-        href="https://gaudy-fountain-233.notion.site/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
-        class="button-secondary"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        VIEW LOG
-      </a>
-    </div>
-  </div>
+.jsm-sub {
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: rgba(0,0,0,0.55);
+}
 
-  <script>
-    // ====== LINK SETUP（ここだけ貼り替えればOK）======
-    const BUY_URL   = "#";      // ← Jupiterリンクをここに
-    const ENTER_URL = "#";      // ← 例: "/market/"
+/* ===== ボタン共通 ===== */
+.buttons {
+  margin-top: auto;
+  padding-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-    const buyBtn = document.getElementById("buyBtn");
-    const enterBtn = document.getElementById("enterBtn");
-    buyBtn.setAttribute("href", BUY_URL);
-    enterBtn.setAttribute("href", ENTER_URL);
+.button-primary,
+.button-secondary,
+.button-buy {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 999px;
+  text-decoration: none;
+  letter-spacing: 0.25em;
+  text-align: center;
+}
 
-    // ====== GOLD SNOW（既存保持）======
-    const container = document.getElementById("container");
+/* ===== BUY NOW ===== */
+.button-buy {
+  position: relative;
+  background: radial-gradient(140% 180% at 50% 0%, #1a1a1a 0%, #0c0c0c 55%, #050505 100%);
+  color: #f7efdc;
+  border: 1px solid rgba(200,179,106,.65);
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.22),
+    0 0 0 1px rgba(200,179,106,.14) inset;
+  overflow: hidden;
+}
 
-    function spawnGoldSnow(x, y) {
-      for (let i = 0; i < 14; i++) {
-        const flake = document.createElement("span");
-        flake.className = "gold-flake";
+.button-buy .buy-label {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
 
-        flake.style.left = x + (Math.random() * 120 - 60) + "px";
-        flake.style.top = y + (Math.random() * 20 - 10) + "px";
-        flake.style.animationDuration = 0.6 + Math.random() * 0.4 + "s";
-        flake.style.opacity = 0.4 + Math.random() * 0.4;
+.button-buy .buy-sub {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+}
 
-        container.appendChild(flake);
+/* うっすら金シャイン */
+.button-buy::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(231,215,162,0.25),
+    transparent
+  );
+  animation: shine 3.8s ease-in-out infinite;
+}
 
-        flake.addEventListener("animationend", () => {
-          flake.remove();
-        });
-      }
-    }
+@keyframes shine {
+  0% { left: -40%; }
+  50% { left: 110%; }
+  100% { left: 110%; }
+}
 
-    container.addEventListener("pointerdown", (e) => {
-      const rect = container.getBoundingClientRect();
-      spawnGoldSnow(e.clientX - rect.left, e.clientY - rect.top);
-    }, { passive: true });
-  </script>
-</body>
-</html>
+/* ===== ENTER MARKET ===== */
+.button-primary {
+  background: var(--gold);
+  color: #ffffff;
+  font-size: 14px;
+}
+
+/* ===== VIEW LOG ===== */
+.button-secondary {
+  background: rgba(246, 241, 234, 0.85);
+  color: var(--ink);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  border: 1px solid var(--gold);
+}
+
+/* ===== 金箔スノー ===== */
+.gold-flake {
+  position: absolute;
+  width: 6px;
+  height: 4px;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.4),
+    rgba(200,179,106,0.9),
+    rgba(255,255,255,0.3)
+  );
+  border-radius: 1px;
+  pointer-events: none;
+
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(120px) rotate(40deg);
+    opacity: 0;
+  }
+}
