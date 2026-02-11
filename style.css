@@ -1,29 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=1000">
-</head>
+:root{
+  --gold: #c4b06a;
+  --gold-soft: #d8c98e;
+  --ink: rgba(28,24,20,0.78);
+  --ink-soft: rgba(28,24,20,0.55);
+  --cream: rgba(246,241,234,0.88);
+}
 
-<body>
-  <div class="hero">
-    <div class="top">
-      <h1 class="brand">JAPAN SUSHI<br>MARKET</h1>
-      <div class="tagline">EAT. TRADE. BURN.</div>
-    </div>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    <div class="bottom">
-      <a href="#" class="btn primary">ENTER MARKET</a>
+html, body{
+  height:100%;
+}
 
-      <a href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
-         class="btn ghost"
-         target="_blank"
-         rel="noopener">
-        VIEW LOG
-      </a>
-    </div>
-  </div>
-</body>
-</html>
+body{
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+  background:#000;
+}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;
+  width:100%;
+  background: url("bg.png.PNG") center center / cover no-repeat;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  text-align:center;
+
+  padding-top: calc(64px + env(safe-area-inset-top));
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+}
+
+/* ===== TITLE ===== */
+
+.brand{
+  font-weight:600;
+  letter-spacing:7px;
+  line-height:1.05;
+  font-size: clamp(30px, 6vw, 46px);
+  color: var(--gold);
+}
+
+.tagline{
+  margin-top:18px;
+  letter-spacing:7px;
+  font-size:13px;
+  color: var(--ink-soft);
+}
+
+/* ===== BUTTON WRAPPER ===== */
+
+.bottom{
+  width:min(560px, 92vw);
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* ===== BUTTON BASE ===== */
+
+.btn{
+  height:60px;
+  border-radius:30px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-decoration:none;
+  letter-spacing:7px;
+  font-size:13px;
+  font-weight:500;
+
+  transition: all .2s ease;
+  user-select:none;
+}
+
+.btn:active{
+  transform: translateY(1px);
+  opacity:.94;
+}
+
+/* ===== PRIMARY (上品ゴールド) ===== */
+
+.btn.primary{
+  background: var(--gold);
+  color: rgba(255,255,255,0.95);
+
+  box-shadow:
+    0 18px 30px rgba(0,0,0,0.18),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+}
+
+.btn.primary:hover{
+  background: var(--gold-soft);
+}
+
+/* ===== GHOST (上質クリーム) ===== */
+
+.btn.ghost{
+  background: var(--cream);
+  color: var(--ink-soft);
+
+  border:1px solid rgba(196,176,106,0.45);
+
+  box-shadow:
+    0 16px 26px rgba(0,0,0,0.15);
+}
+
+.btn.ghost:hover{
+  background: rgba(255,255,255,0.95);
+}
