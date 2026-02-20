@@ -1,38 +1,31 @@
-/* =========================
-   JAPAN SUSHI MARKET FINAL
-   ========================= */
-
 :root{
-  --japan-red:#9E1B1B;      /* 深い朱色（完成色） */
+  --japan-red:#9E1B1B;
   --japan-red-deep:#741313;
   --ink:#2B2B2B;
 }
 
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 html,body{
   margin:0;
   padding:0;
   height:100%;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   background:#000;
+  /* ✅ ここでフォント固定（iPhone標準の見え方に寄せる） */
+  font-family: "Times New Roman", Times, serif;
 }
 
-/* ===== 背景（現画像を活かす） ===== */
 .hero{
   position:relative;
   width:100%;
   height:100vh;
-
   background-image:url("bg.png.PNG");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 }
 
-/* ===== 上部 ===== */
+/* 上部 */
 .top{
   position:absolute;
   top:12%;
@@ -41,20 +34,19 @@ html,body{
   padding:0 20px;
 }
 
-/* ===== タイトル（フォントは変えてない） ===== */
+/* ✅ 金版に近い serif の字形で固定しつつ色だけ赤 */
 .brand{
   margin:0;
   font-size:28px;
-  font-weight:400;                 /* ← 元の軽さに戻す */
-  letter-spacing:0.34em;           /* ← 高級感の要 */
+  font-weight:400;
+  letter-spacing:0.34em;
   line-height:1.2;
   color:var(--japan-red);
 
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  /* ✅ これ以上レンダリング触らない（変わる原因） */
 }
 
-/* ===== サブコピー ===== */
+/* サブコピー */
 .tagline{
   margin-top:18px;
   font-size:12px;
@@ -62,7 +54,7 @@ html,body{
   color:var(--ink);
 }
 
-/* ===== 下部ボタン ===== */
+/* 下部 */
 .bottom{
   position:absolute;
   bottom:8%;
@@ -74,7 +66,6 @@ html,body{
   padding:0 20px;
 }
 
-/* ===== ボタン共通 ===== */
 .btn{
   width:min(82%,360px);
   padding:18px 0;
@@ -86,25 +77,18 @@ html,body{
   display:block;
 }
 
-/* ===== ENTER（完成版：ベタ赤禁止） ===== */
+/* ENTER */
 .btn.primary{
-  background:linear-gradient(
-    180deg,
-    #B32626 0%,
-    #8E1C1C 100%
-  );
+  background:linear-gradient(180deg,#B32626 0%, #8E1C1C 100%);
   color:#fff;
-
   box-shadow:0 8px 24px rgba(120,20,20,0.25);
-  transition:transform .15s ease, box-shadow .15s ease;
 }
 
 .btn.primary:active{
-  transform:translateY(2px);
-  box-shadow:0 4px 12px rgba(120,20,20,0.25);
+  background:linear-gradient(180deg,#A21F1F 0%, #7A1717 100%);
 }
 
-/* ===== VIEW LOG ===== */
+/* VIEW LOG */
 .btn.ghost{
   background:rgba(255,255,255,0.65);
   color:#444;
