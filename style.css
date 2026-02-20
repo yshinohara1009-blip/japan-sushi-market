@@ -1,11 +1,16 @@
+/* =========================
+   JAPAN SUSHI MARKET FINAL
+   ========================= */
+
 :root{
-  --red-main:#B30000;
-  --red-deep:#8F0000;
-  --ink:#1A1A1A;
-  --white: #FFFFFF;
+  --japan-red:#9E1B1B;      /* 深い朱色（完成色） */
+  --japan-red-deep:#741313;
+  --ink:#2B2B2B;
 }
 
-*{box-sizing:border-box;}
+*{
+  box-sizing:border-box;
+}
 
 html,body{
   margin:0;
@@ -15,43 +20,41 @@ html,body{
   background:#000;
 }
 
-/* 画面全体がヒーロー */
+/* ===== 背景（現画像を活かす） ===== */
 .hero{
   position:relative;
   width:100%;
   height:100vh;
 
-  /* ✅ 背景画像（あなたのファイル名に完全一致） */
   background-image:url("bg.png.PNG");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-
-  overflow:hidden;
 }
 
-/* 上部 */
+/* ===== 上部 ===== */
 .top{
   position:absolute;
-  top:11%;
-  left:0;
+  top:12%;
   width:100%;
   text-align:center;
-  padding:0 16px;
+  padding:0 20px;
 }
 
-/* 🔴 タイトル：金→日本の赤 */
+/* ===== タイトル（フォントは変えてない） ===== */
 .brand{
   margin:0;
   font-size:28px;
-  font-weight:500;
-  letter-spacing:0.28em;
-  line-height:1.15;
-  color:var(--red-main);
-  text-transform:uppercase;
+  font-weight:400;                 /* ← 元の軽さに戻す */
+  letter-spacing:0.34em;           /* ← 高級感の要 */
+  line-height:1.2;
+  color:var(--japan-red);
+
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
 }
 
-/* ⚫ サブコピー：墨黒 */
+/* ===== サブコピー ===== */
 .tagline{
   margin-top:18px;
   font-size:12px;
@@ -59,22 +62,21 @@ html,body{
   color:var(--ink);
 }
 
-/* 下部ボタン */
+/* ===== 下部ボタン ===== */
 .bottom{
   position:absolute;
   bottom:8%;
-  left:0;
   width:100%;
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:16px;
-  padding:0 16px;
+  padding:0 20px;
 }
 
-/* ボタン共通 */
+/* ===== ボタン共通 ===== */
 .btn{
-  width:min(82%, 360px);
+  width:min(82%,360px);
   padding:18px 0;
   border-radius:999px;
   text-align:center;
@@ -82,30 +84,29 @@ html,body{
   font-size:13px;
   letter-spacing:0.35em;
   display:block;
-
-  /* iOSの青リンク化を潰す */
-  -webkit-tap-highlight-color: transparent;
 }
 
-/* 🔴 ENTER MARKET（主役） */
+/* ===== ENTER（完成版：ベタ赤禁止） ===== */
 .btn.primary{
-  background:var(--red-main);
-  color:var(--white);
+  background:linear-gradient(
+    180deg,
+    #B32626 0%,
+    #8E1C1C 100%
+  );
+  color:#fff;
+
+  box-shadow:0 8px 24px rgba(120,20,20,0.25);
+  transition:transform .15s ease, box-shadow .15s ease;
 }
 
 .btn.primary:active{
-  background:var(--red-deep);
-  transform:scale(0.985);
+  transform:translateY(2px);
+  box-shadow:0 4px 12px rgba(120,20,20,0.25);
 }
 
-/* ⚪ VIEW LOG（副役） */
+/* ===== VIEW LOG ===== */
 .btn.ghost{
-  background:rgba(255,255,255,0.60);
+  background:rgba(255,255,255,0.65);
   color:#444;
   backdrop-filter:blur(6px);
-}
-
-.btn.ghost:active{
-  background:rgba(255,255,255,0.72);
-  transform:scale(0.985);
 }
