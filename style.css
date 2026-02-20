@@ -52,7 +52,7 @@ html,body{
 /* 下部（ENTERだけなので少し上げて“主役感”） */
 .bottom{
   position:absolute;
-  bottom:10%;
+  bottom:14%;
   width:100%;
   display:flex;
   justify-content:center;
