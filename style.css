@@ -1,108 +1,111 @@
-:root {
-  --red-main: #B30000;
-  --red-deep: #8F0000;
-  --ink: #1A1A1A;
+:root{
+  --red-main:#B30000;
+  --red-deep:#8F0000;
+  --ink:#1A1A1A;
+  --white: #FFFFFF;
 }
 
-/* リセット */
-* { box-sizing: border-box; }
+*{box-sizing:border-box;}
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #000;
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  background:#000;
 }
 
-body {
-  display: flex;
-  justify-content: center;
+/* 画面全体がヒーロー */
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+
+  /* ✅ 背景画像（あなたのファイル名に完全一致） */
+  background-image:url("bg.png.PNG");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  overflow:hidden;
 }
 
-/* コンテナ */
-.container {
-  width: 100%;
-  max-width: 430px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+/* 上部 */
+.top{
+  position:absolute;
+  top:11%;
+  left:0;
+  width:100%;
+  text-align:center;
+  padding:0 16px;
 }
 
-/* ヒーロー（背景画像ここで指定） */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-
-  background-image: url("bg.png.PNG"); /* ←あなたの画像名固定 */
-  background-size: cover;
-  background-position: center;
+/* 🔴 タイトル：金→日本の赤 */
+.brand{
+  margin:0;
+  font-size:28px;
+  font-weight:500;
+  letter-spacing:0.28em;
+  line-height:1.15;
+  color:var(--red-main);
+  text-transform:uppercase;
 }
 
-/* タイトル位置 */
-.top {
-  position: absolute;
-  top: 11%;
-  width: 100%;
-  text-align: center;
+/* ⚫ サブコピー：墨黒 */
+.tagline{
+  margin-top:18px;
+  font-size:12px;
+  letter-spacing:0.45em;
+  color:var(--ink);
 }
 
-/* タイトル（赤） */
-.title {
-  font-size: 28px;
-  letter-spacing: 0.28em;
-  color: var(--red-main);
-  margin: 0;
-  font-weight: 500;
+/* 下部ボタン */
+.bottom{
+  position:absolute;
+  bottom:8%;
+  left:0;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+  padding:0 16px;
 }
 
-/* サブコピー */
-.tagline {
-  margin-top: 18px;
-  font-size: 12px;
-  letter-spacing: 0.45em;
-  color: var(--ink);
+/* ボタン共通 */
+.btn{
+  width:min(82%, 360px);
+  padding:18px 0;
+  border-radius:999px;
+  text-align:center;
+  text-decoration:none;
+  font-size:13px;
+  letter-spacing:0.35em;
+  display:block;
+
+  /* iOSの青リンク化を潰す */
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* ボタンエリア */
-.bottom {
-  position: absolute;
-  bottom: 8%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
+/* 🔴 ENTER MARKET（主役） */
+.btn.primary{
+  background:var(--red-main);
+  color:var(--white);
 }
 
-/* ENTER（赤ボタン） */
-.enter-btn {
-  width: 82%;
-  padding: 18px 0;
-  background: var(--red-main);
-  color: #FFFFFF;
-  border-radius: 999px;
-  text-align: center;
-  letter-spacing: 0.35em;
-  font-size: 13px;
-  text-decoration: none;
+.btn.primary:active{
+  background:var(--red-deep);
+  transform:scale(0.985);
 }
 
-.enter-btn:active {
-  background: var(--red-deep);
+/* ⚪ VIEW LOG（副役） */
+.btn.ghost{
+  background:rgba(255,255,255,0.60);
+  color:#444;
+  backdrop-filter:blur(6px);
 }
 
-/* VIEW LOG（白ボタン） */
-.log-btn {
-  width: 82%;
-  padding: 18px 0;
-  background: rgba(255,255,255,0.6);
-  color: #444;
-  border-radius: 999px;
-  text-align: center;
-  letter-spacing: 0.35em;
-  font-size: 13px;
-  text-decoration: none;
-  backdrop-filter: blur(6px);
+.btn.ghost:active{
+  background:rgba(255,255,255,0.72);
+  transform:scale(0.985);
 }
