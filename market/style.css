@@ -1,0 +1,35 @@
+body{
+  margin:0;
+  background:#000;
+  color:#fff;
+  font-family:"Times New Roman", Times, serif;
+  text-align:center;
+  padding-top:120px;
+}
+
+.btn{
+  display:block;
+  width:260px;
+  margin:20px auto;
+  padding:16px;
+  border-radius:999px;
+  text-decoration:none;
+  letter-spacing:0.3em;
+}
+
+.primary{
+  background:#9E1B1B;
+  color:#fff;
+}
+
+.ghost{
+  background:#ddd;
+  color:#333;
+}
+
+.back{
+  color:#888;
+  text-decoration:none;
+  display:block;
+  margin-top:40px;
+}
