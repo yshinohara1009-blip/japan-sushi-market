@@ -1,31 +1,40 @@
+/* =========================
+   JAPAN SUSHI MARKET FINAL
+   ========================= */
+
 :root{
   --japan-red:#9E1B1B;
   --japan-red-deep:#741313;
   --ink:#2B2B2B;
 }
 
-*{ box-sizing:border-box; }
+*{
+  box-sizing:border-box;
+}
 
 html,body{
   margin:0;
   padding:0;
   height:100%;
   background:#000;
-  /* ✅ ここでフォント固定（iPhone標準の見え方に寄せる） */
+
+  /* 元の上品なserif感を維持 */
   font-family: "Times New Roman", Times, serif;
 }
 
+/* ===== 背景 ===== */
 .hero{
   position:relative;
   width:100%;
   height:100vh;
+
   background-image:url("bg.png.PNG");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
 }
 
-/* 上部 */
+/* ===== 上部 ===== */
 .top{
   position:absolute;
   top:12%;
@@ -34,7 +43,7 @@ html,body{
   padding:0 20px;
 }
 
-/* ✅ 金版に近い serif の字形で固定しつつ色だけ赤 */
+/* ===== ブランド文字 ===== */
 .brand{
   margin:0;
   font-size:28px;
@@ -42,11 +51,9 @@ html,body{
   letter-spacing:0.32em;
   line-height:1.2;
   color:var(--japan-red);
-
-  /* ✅ これ以上レンダリング触らない（変わる原因） */
 }
 
-/* サブコピー */
+/* ===== サブコピー ===== */
 .tagline{
   margin-top:18px;
   font-size:12px;
@@ -54,7 +61,7 @@ html,body{
   color:var(--ink);
 }
 
-/* 下部 */
+/* ===== 下部配置 ===== */
 .bottom{
   position:absolute;
   bottom:8%;
@@ -66,6 +73,7 @@ html,body{
   padding:0 20px;
 }
 
+/* ===== ボタン共通 ===== */
 .btn{
   width:min(82%,360px);
   padding:18px 0;
@@ -75,22 +83,40 @@ html,body{
   font-size:13px;
   letter-spacing:0.35em;
   display:block;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* ENTER */
+/* ===== ENTER MARKET（漆質感） ===== */
 .btn.primary{
-  background:linear-gradient(180deg,#B32626 0%, #8E1C1C 100%);
-  color:#fff;
-  box-shadow:0 8px 24px rgba(120,20,20,0.25);
+  color:#F8F6F2;
+
+  background:
+    radial-gradient(120% 140% at 18% 12%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0) 48%),
+    linear-gradient(180deg,#A32020 0%, #6F1111 100%);
+
+  border:1px solid rgba(255,255,255,0.10);
+
+  box-shadow:
+    0 12px 28px rgba(70,10,10,0.28),
+    inset 0 1px 0 rgba(255,255,255,0.15);
+
+  transition:all .18s ease;
 }
 
 .btn.primary:active{
-  background:linear-gradient(180deg,#A21F1F 0%, #7A1717 100%);
+  transform:translateY(2px);
+
+  box-shadow:
+    0 6px 16px rgba(70,10,10,0.25),
+    inset 0 1px 0 rgba(255,255,255,0.10);
 }
 
-/* VIEW LOG */
+/* ===== VIEW LOG（控えめガラス） ===== */
 .btn.ghost{
-  background:rgba(255,255,255,0.65);
+  background:rgba(255,255,255,0.62);
   color:#444;
-  backdrop-filter:blur(6px);
+
+  border:1px solid rgba(0,0,0,0.06);
+
+  backdrop-filter:blur(8px);
 }
