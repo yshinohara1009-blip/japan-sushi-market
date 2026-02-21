@@ -1,94 +1,102 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html, body {
-  height: 100%;
-  background: #000;
+/* RESET */
+body{
+  margin:0;
+  background:#050505;
   font-family: serif;
+  color:white;
+  text-align:center;
 }
 
-/* 画像全体を見せる（切らない） */
-.wrap {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding-bottom: 120px; /* 下の固定ボタン分の余白 */
+/* IMAGE */
+.market-visual img{
+  width:100%;
+  max-width:900px;
+  margin-top:40px;
+  filter: drop-shadow(0 40px 80px rgba(0,0,0,.8));
 }
 
-.poster {
-  width: 100%;
-  max-width: 480px;  /* iPhoneでちょうど良い上限 */
-  height: auto;
-  display: block;
+/* ACTION AREA */
+.market-actions{
+  margin-top:60px;
+  padding-bottom:80px;
 }
 
-/* 下固定ボタン */
-.cta {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  display: flex;
-  justify-content: center;
-  padding: 0 16px;
-  pointer-events: none; /* 余計な被り防止 */
+/* TRADE BUTTON */
+.trade-btn{
+  display:inline-block;
+  padding:18px 40px;
+  margin:12px;
+  letter-spacing:3px;
+  text-decoration:none;
+  color:white;
+  background:linear-gradient(180deg,#9c1d1d,#5c0d0d);
+  border-radius:14px;
+  box-shadow:0 15px 40px rgba(0,0,0,.6);
+  transition:.25s;
 }
 
-.cta button {
-  pointer-events: auto;
-  width: 100%;
-  max-width: 420px;
-  padding: 18px 44px;
-  font-size: 16px;
-  letter-spacing: 2px;
-  background: rgba(120, 20, 20, 0.92);
-  color: #fff;
-  border: none;
-  border-radius: 40px;
+.trade-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 25px 60px rgba(0,0,0,.8);
 }
 
-/* モーダル */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.72);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+/* CONTRACT BUTTON */
+.contract-btn{
+  padding:16px 34px;
+  margin:12px;
+  letter-spacing:3px;
+  color:#ccc;
+  background:transparent;
+  border:1px solid #444;
+  border-radius:14px;
+  cursor:pointer;
+  transition:.25s;
 }
 
-.modal-box {
-  width: 100%;
-  max-width: 420px;
-  background: #0f0f0f;
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px;
-  padding: 26px 22px;
-  text-align: center;
-  color: #fff;
+.contract-btn:hover{
+  border-color:#888;
+  color:white;
 }
 
-.modal-title {
-  font-size: 14px;
-  letter-spacing: 2px;
-  opacity: 0.95;
+/* CA BOX */
+.ca-box{
+  margin-top:30px;
+  opacity:0;
+  transform:translateY(-10px);
+  transition:.3s;
+  pointer-events:none;
 }
 
-.modal-sub {
-  margin-top: 10px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  opacity: 0.7;
+.ca-box.show{
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
 }
 
-.modal-close {
-  margin-top: 18px;
-  width: 100%;
-  padding: 14px 18px;
-  border-radius: 12px;
-  border: none;
-  background: #2a2a2a;
-  color: #fff;
-  letter-spacing: 2px;
+.ca-box p{
+  background:#111;
+  padding:12px;
+  border-radius:10px;
+  letter-spacing:1px;
+  font-size:13px;
+}
+
+/* COPY BUTTON */
+.copy-btn{
+  margin-top:10px;
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  background:#222;
+  color:white;
+  cursor:pointer;
+}
+
+/* COPIED TEXT */
+#copied{
+  display:block;
+  margin-top:8px;
+  font-size:12px;
+  opacity:0;
+  transition:.3s;
 }
