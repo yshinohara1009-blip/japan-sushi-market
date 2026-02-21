@@ -1,86 +1,154 @@
 body{
   margin:0;
   background:#050505;
-  color:#e6e6e6;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 
-/* HERO IMAGE (CTAが同画面に入るサイズ) */
-.hero{
-  height: calc(100vh - 220px);
+/* iPhone縦で収まる「額縁」 */
+.frame{
+  width:100%;
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding-top:12px;
+  padding:10px 0;
 }
 
-.hero img{
-  max-height:100%;
-  max-width:92vw;
+.art{
+  position:relative;
+  width:min(92vw, 520px);
+  aspect-ratio: 2 / 3;          /* 縦長 */
+}
+
+.art img{
+  width:100%;
+  height:100%;
   object-fit:contain;
-}
-
-/* iPhoneアドレスバー対策 */
-@supports (height: 100svh){
-  .hero{ height: calc(100svh - 220px); }
-}
-
-/* ACTION */
-.action{
-  text-align:center;
-  margin-top:8px;
-  padding-bottom:18px;
-}
-
-/* CTA（文字だけ） */
-.cta{
   display:block;
-  text-decoration:none;
-  color:#e6e6e6;
-  font-size:20px;
-  letter-spacing:0.04em;
-  margin-bottom:12px;
-  transition:opacity .25s;
 }
 
-.cta:hover{ opacity:.6; }
-
-/* CONTRACT */
-.contract{
-  background:none;
-  border:none;
-  color:#777;
-  font-size:14px;
+/* 透明ホットスポット（押した時だけうっすら出る） */
+.hotspot{
+  position:absolute;
+  border-radius:14px;
+  background:rgba(255,255,255,0.00);
   cursor:pointer;
-  transition:.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+.hotspot:active{
+  background:rgba(255,255,255,0.08);
 }
 
-.contract:hover{ color:#aaa; }
+/* --- 座標（ここだけ微調整すればOK） --- */
+/* Trade on Jupiter：下中央（広め） */
+.hotspot-jup{
+  left:10%;
+  right:10%;
+  bottom:16%;
+  height:10%;
+}
 
-/* CA表示 */
-.ca{
-  margin-top:10px;
-  color:#999;
-  font-size:13px;
+/* Contract Address：その上（中くらい） */
+.hotspot-ca{
+  left:22%;
+  right:22%;
+  bottom:27%;
+  height:8%;
+  border:none;
+}
+
+/* Notion（ログ）：右下寄り（小さめ） */
+.hotspot-log{
+  width:34%;
+  height:7%;
+  right:10%;
+  bottom:6%;
+}
+
+/* CAパネル（画像内・下寄り） */
+.caBox{
+  position:absolute;
+  left:7%;
+  right:7%;
+  bottom:34%;
+  padding:12px 12px 10px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.14);
+  background:linear-gradient(180deg, rgba(10,10,10,0.58), rgba(0,0,0,0.58));
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
   opacity:0;
-  transition:.3s;
+  transform: translateY(6px);
+  pointer-events:none;
+  transition: opacity 180ms ease, transform 220ms ease;
 }
 
-.ca.show{ opacity:1; }
+.caBox.show{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
 
-/* ARCHIVE */
-.archive{
-  margin-top:60px;
-  padding-bottom:80px;
-  text-align:center;
-  color:#666;
+.caRow{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+
+.caLabel{
+  color:rgba(255,255,255,0.6);
+  letter-spacing:0.16em;
   font-size:12px;
-  letter-spacing:0.06em;
-  line-height:1.9;
+  padding-top:2px;
+  min-width:34px;
 }
 
-.archive-title{
-  color:#888;
-  margin-bottom:10px;
+.caText{
+  display:block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:12px;
+  line-height:1.35;
+  color:rgba(255,255,255,0.88);
+
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.06);
+
+  overflow-wrap:anywhere;
+  word-break: break-word;
+}
+
+.copyBtn{
+  width:100%;
+  margin-top:10px;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.06);
+  color:rgba(255,255,255,0.88);
+  letter-spacing:0.14em;
+  cursor:pointer;
+}
+.copyBtn:active{
+  background:rgba(255,255,255,0.10);
+}
+
+.toast{
+  margin-top:8px;
+  text-align:center;
+  font-size:12px;
+  letter-spacing:0.14em;
+  color:rgba(255,255,255,0.7);
+  opacity:0;
+  transform: translateY(-4px);
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+.toast.show{
+  opacity:1;
+  transform: translateY(0);
 }
