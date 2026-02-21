@@ -1,35 +1,54 @@
-body{
-  margin:0;
-  background:#000;
-  color:#fff;
-  font-family:"Times New Roman", Times, serif;
-  text-align:center;
-  padding-top:120px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.btn{
-  display:block;
-  width:260px;
-  margin:20px auto;
-  padding:16px;
-  border-radius:999px;
-  text-decoration:none;
-  letter-spacing:0.3em;
+body {
+  height: 100vh;
+  background: url("JSM.PNG") center center / cover no-repeat;
+  font-family: serif;
 }
 
-.primary{
-  background:#9E1B1B;
-  color:#fff;
+/* ボタン配置 */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 8vh;
 }
 
-.ghost{
-  background:#ddd;
-  color:#333;
+button {
+  padding: 18px 44px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  background: rgba(120, 20, 20, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
 }
 
-.back{
-  color:#888;
-  text-decoration:none;
-  display:block;
-  margin-top:40px;
+/* モーダル */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-box {
+  background: #111;
+  color: #fff;
+  padding: 30px 40px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.modal-box button {
+  margin-top: 20px;
+  background: #333;
 }
