@@ -4,36 +4,35 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css?v=204" />
+<link rel="stylesheet" href="style.css?v=301" />
 </head>
 
 <body>
 
 <div class="wrap">
-  <div class="stage debug-off" id="stage">
+  <div class="stage">
 
     <img src="JSM.PNG" class="art" alt="JAPAN SUSHI MARKET">
 
-    <!-- Jupiter（透明タップ） -->
-    <a class="hit trade"
-       href="https://jup.ag/swap/SOL-ここにCA"
-       target="_blank" rel="noopener"
-       aria-label="Trade on Jupiter"></a>
+    <!-- 見えるボタン（下に固定表示） -->
+    <div class="ui">
+      <a class="btn primary"
+         href="https://jup.ag/swap/SOL-ここにCA"
+         target="_blank" rel="noopener">
+        TRADE ON JUPITER
+      </a>
 
-    <!-- Contract（透明タップ） -->
-    <button class="hit ca" type="button"
-            onclick="toggleCA()"
-            aria-label="Contract Address"></button>
-
-    <!-- CA表示 -->
-    <div id="caBox" class="caBox" role="dialog" aria-label="Contract Address">
-      <code id="caText" class="caText">ここにCA</code>
-      <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
-      <div id="toast" class="toast" role="status" aria-live="polite">COPIED</div>
+      <button class="btn ghost" type="button" onclick="toggleCA()">
+        CONTRACT
+      </button>
     </div>
 
-    <!-- デバッグ切替（見えない小ボタン） -->
-    <button class="debugToggle" type="button" onclick="toggleDebug()"></button>
+    <!-- CA表示 -->
+    <div id="caBox" class="caBox">
+      <code id="caText" class="caText">ここにCA</code>
+      <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
+      <div id="toast" class="toast">COPIED</div>
+    </div>
 
   </div>
 </div>
@@ -60,11 +59,6 @@ async function copyCA(){
 
   toast.classList.add("show");
   setTimeout(()=>toast.classList.remove("show"), 900);
-}
-
-function toggleDebug(){
-  document.getElementById("stage").classList.toggle("debug-on");
-  document.getElementById("stage").classList.toggle("debug-off");
 }
 </script>
 
