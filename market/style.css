@@ -1,75 +1,71 @@
-/* -------------------------
-   RESET
-------------------------- */
 body{
   margin:0;
   background:#000;
-  font-family: "Times New Roman", serif;
-}
-
-/* -------------------------
-   背景イメージ（主役）
-------------------------- */
-.stage{
-  min-height:100svh;
+  min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
-  position:relative;
-  overflow:hidden;
+  align-items:center;
+  font-family:"Times New Roman", serif;
 }
 
-.stage img{
+/* 画像幅＝UI幅 を完全に一致させる */
+.wrap{
   width:100%;
-  max-width:520px;
-  height:auto;
+  display:flex;
+  justify-content:center;
+  padding:12px 0;
+}
+
+.stage{
+  position:relative;
+  width:min(92vw, 520px);
+}
+
+.art{
+  width:100%;
   display:block;
 }
 
-/* -------------------------
-   下UIエリア（ボタン）
-------------------------- */
+/* 画像の上で、画像幅にロックしたUI */
 .ui{
   position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:6%;
-  width:min(86%, 460px);
+  left:6%;
+  right:6%;
+  bottom:5%;
   display:flex;
   flex-direction:column;
-  gap:14px;
-  z-index:10;
+  gap:12px;
+  z-index:20;
 }
 
-/* -------------------------
-   共通ボタン（高級ガラス）
-------------------------- */
+/* 共通：薄い金属縁＋ガラス */
 .btn{
   position:relative;
+  width:100%;
+  padding:18px 14px;
+  border-radius:999px;
+
+  letter-spacing:.34em;
+  font-size:14px;
   text-align:center;
   text-decoration:none;
 
-  padding:20px 16px;
-  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(18,18,18,0.28);
 
-  letter-spacing:0.38em;
-  font-size:14px;
   color:rgba(255,255,255,0.92);
 
-  background:rgba(18,18,18,0.38);
-  border:1px solid rgba(255,255,255,0.12);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.65),
-    inset 0 1px 0 rgba(255,255,255,0.06);
+    0 18px 45px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.08);
 
-  transition:all .35s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* 上にうっすら光 */
+/* 上面の反射（ガラスっぽさ） */
 .btn::before{
   content:"";
   position:absolute;
@@ -77,54 +73,105 @@ body{
   border-radius:inherit;
   background:linear-gradient(
     180deg,
-    rgba(255,255,255,0.18),
-    rgba(255,255,255,0.02) 40%,
-    transparent 60%
+    rgba(255,255,255,0.22),
+    rgba(255,255,255,0.05) 35%,
+    rgba(255,255,255,0.00) 65%
   );
-  opacity:.25;
+  opacity:.22;
   pointer-events:none;
 }
 
-/* -------------------------
-   メインボタン（赤）
-------------------------- */
-.btn.primary{
+/* メイン：深い赤＋薄い金属縁（安っぽさ回避） */
+.primary{
   background:linear-gradient(
     180deg,
-    #a81f1f,
-    #7a1212 60%,
-    #5c0d0d
+    #8c1717,
+    #5a0d0d 65%,
+    #3b0808
   );
-
-  border:1px solid rgba(255,120,120,0.35);
-
+  border:1px solid rgba(255,210,160,0.20); /* うっすら金 */
   box-shadow:
-    0 26px 70px rgba(120,0,0,0.55),
-    inset 0 1px 0 rgba(255,200,200,0.25);
+    0 20px 55px rgba(120,0,0,0.42),
+    inset 0 1px 0 rgba(255,230,200,0.20);
 }
 
-/* -------------------------
-   ホバー（PCだけ効く）
-------------------------- */
-@media (hover:hover){
-  .btn:hover{
-    transform:translateY(-2px);
-    box-shadow:
-      0 34px 90px rgba(0,0,0,0.75),
-      inset 0 1px 0 rgba(255,255,255,0.08);
-  }
-
-  .btn.primary:hover{
-    box-shadow:
-      0 34px 90px rgba(150,0,0,0.65),
-      inset 0 1px 0 rgba(255,210,210,0.35);
-  }
+/* サブ：スモークガラス＋金属フレーム */
+.ghost{
+  background:rgba(8,8,8,0.35);
+  border:1px solid rgba(255,230,190,0.16);
+  color:rgba(255,255,255,0.86);
 }
 
-/* -------------------------
-   押した時（スマホ用）
-------------------------- */
+/* 押した時だけ小さく沈む（高級UIっぽい） */
 .btn:active{
-  transform:scale(.985);
-  transition:.1s;
+  transform: translateY(1px);
 }
+
+/* CAパネル */
+.caBox{
+  position:absolute;
+  left:6%;
+  right:6%;
+  bottom:24%;
+  z-index:30;
+
+  padding:14px;
+  border-radius:14px;
+
+  background:rgba(0,0,0,0.72);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  opacity:0;
+  transform: translateY(8px);
+  pointer-events:none;
+  transition: opacity 180ms ease, transform 220ms ease;
+}
+
+.caBox.show{
+  opacity:1;
+  transform: translateY(0);
+  pointer-events:auto;
+}
+
+.caText{
+  display:block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size:12px;
+  line-height:1.35;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  overflow-wrap:anywhere;
+  word-break: break-word;
+  color:rgba(255,255,255,0.92);
+}
+
+.copyBtn{
+  margin-top:10px;
+  width:100%;
+  padding:12px 14px;
+  border:none;
+  border-radius:999px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.14);
+  color:#fff;
+  letter-spacing:.28em;
+  cursor:pointer;
+}
+
+.copyBtn:active{
+  transform: translateY(1px);
+}
+
+.toast{
+  margin-top:8px;
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.22em;
+  opacity:0;
+  transition: opacity 180ms ease;
+}
+.toast.show{ opacity:1; }
