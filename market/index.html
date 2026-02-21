@@ -4,17 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css?v=301" />
+<link rel="stylesheet" href="style.css?v=401" />
 </head>
 
 <body>
 
 <div class="wrap">
-  <div class="stage">
+  <main class="stage">
 
     <img src="JSM.PNG" class="art" alt="JAPAN SUSHI MARKET">
 
-    <!-- 見えるボタン（下に固定表示） -->
+    <!-- UI（画像幅に完全ロック） -->
     <div class="ui">
       <a class="btn primary"
          href="https://jup.ag/swap/SOL-ここにCA"
@@ -27,14 +27,14 @@
       </button>
     </div>
 
-    <!-- CA表示 -->
+    <!-- CAパネル -->
     <div id="caBox" class="caBox">
       <code id="caText" class="caText">ここにCA</code>
       <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
       <div id="toast" class="toast">COPIED</div>
     </div>
 
-  </div>
+  </main>
 </div>
 
 <script>
