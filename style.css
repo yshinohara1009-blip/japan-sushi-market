@@ -1,100 +1,72 @@
-:root{
-  --bg:#f5ede6;
-  --red1:#a32626;
-  --red2:#5c0d0d;
-  --title:#6b1b1b;
-}
-
-*{ box-sizing:border-box; }
-
 body{
   margin:0;
   font-family: serif;
-  background:var(--bg);
+  background:#f5ede6;
   color:#222;
 }
 
-/* 1画面に固定 */
-.page{
+/* 画面全体 */
+.hero{
   min-height:100vh;
   display:flex;
   flex-direction:column;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
   text-align:center;
-  padding:44px 18px 54px;
+  padding:40px 20px 50px;
 }
 
-/* タイトル */
+/* 上 */
 .top h1{
   margin:0;
-  font-size:36px;
-  letter-spacing:10px;
-  font-weight:500;
-  color:var(--title);
+  letter-spacing:8px;
+  font-size:32px;
+  font-weight:400;
 }
 
 .top p{
-  margin:14px 0 0;
-  font-size:14px;
-  letter-spacing:6px;
-  color:#7a2a2a;
+  margin-top:10px;
+  letter-spacing:5px;
+  font-size:12px;
 }
 
-/* ✅ 画像を“枠無しの全面”にする */
-.hero{
-  width:100%;
+/* 真ん中の寿司 */
+.center{
   flex:1;
-  margin:18px 0 26px;
-
-  background-image:url("bg.png.PNG");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* 下部 */
+.center img{
+  width:92%;
+  max-width:460px;
+  height:auto;
+}
+
+/* 下 */
 .bottom{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:18px;
-  width:100%;
 }
 
-/* 赤いピルボタン */
+/* ENTER MARKET ボタン */
 .enter{
   display:inline-block;
-  width:min(520px, 92vw);
-  padding:20px 18px;
-  border-radius:999px;
-
-  color:#fff;
+  padding:18px 52px;
+  background:linear-gradient(#a11d1d,#6e0f0f);
+  color:white;
   text-decoration:none;
-  letter-spacing:8px;
+  border-radius:40px;
+  letter-spacing:6px;
   font-size:14px;
-  text-transform:uppercase;
-
-  background:linear-gradient(180deg, var(--red1), var(--red2));
-  box-shadow:0 22px 55px rgba(0,0,0,0.35);
-  transition:transform .18s ease, opacity .18s ease;
-}
-
-.enter:active{
-  transform:translateY(1px);
-  opacity:.95;
 }
 
 /* VIEW LOG */
 .log{
   font-size:12px;
-  letter-spacing:4px;
-  color:#7a7a7a;
+  color:#777;
   text-decoration:none;
-}
-.log:active{ opacity:.7; }
-
-/* iPhoneアドレスバー対策 */
-@supports (height: 100svh){
-  .page{ min-height:100svh; }
 }
