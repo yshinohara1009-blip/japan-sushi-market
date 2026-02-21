@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <main class="wrap">
+    <!-- 画像を「背景」じゃなく「実体」として表示＝切れない -->
+    <img class="poster" src="JSM.PNG" alt="JAPAN SUSHI MARKET - WARNING" />
+  </main>
 
-<div class="overlay">
-  <div class="button-area">
+  <!-- ボタンは常に下に固定 -->
+  <div class="cta">
     <button id="accessBtn">ACCESS RESTRICTED</button>
   </div>
-</div>
 
-<div id="modal" class="modal">
-  <div class="modal-box">
-    <p>UNREGISTERED MARKET ACCESS</p>
-    <p>SESSION RECORDED</p>
-    <button onclick="closeModal()">CLOSE</button>
+  <!-- モーダル -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="modal-title">UNREGISTERED MARKET ACCESS</div>
+      <div class="modal-sub">SESSION RECORDED</div>
+      <button class="modal-close" id="closeBtn">CLOSE</button>
+    </div>
   </div>
-</div>
 
 <script>
-document.getElementById("accessBtn").onclick = function() {
-  document.getElementById("modal").style.display = "flex";
-};
-
-function closeModal() {
-  document.getElementById("modal").style.display = "none";
-}
+  const modal = document.getElementById("modal");
+  document.getElementById("accessBtn").onclick = () => {
+    modal.style.display = "flex";
+    modal.setAttribute("aria-hidden", "false");
+  };
+  document.getElementById("closeBtn").onclick = () => {
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+  };
+  modal.onclick = (e) => {
+    if (e.target === modal) {
+      modal.style.display = "none";
+      modal.setAttribute("aria-hidden", "true");
+    }
+  };
 </script>
-
 </body>
 </html>
