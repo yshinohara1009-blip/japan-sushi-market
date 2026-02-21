@@ -8,7 +8,6 @@ body{
   font-family:"Times New Roman", serif;
 }
 
-/* 画像幅＝UI幅 を完全に一致させる */
 .wrap{
   width:100%;
   display:flex;
@@ -26,7 +25,7 @@ body{
   display:block;
 }
 
-/* 画像の上で、画像幅にロックしたUI */
+/* UIを画像にロック */
 .ui{
   position:absolute;
   left:6%;
@@ -38,76 +37,116 @@ body{
   z-index:20;
 }
 
-/* 共通：薄い金属縁＋ガラス */
+/* ===== 高級 “装置パネル” ボタン ===== */
 .btn{
   position:relative;
   width:100%;
   padding:18px 14px;
   border-radius:999px;
 
-  letter-spacing:.34em;
+  letter-spacing:.42em;
   font-size:14px;
   text-align:center;
   text-decoration:none;
+  color:rgba(255,255,255,0.90);
 
-  border:1px solid rgba(255,255,255,0.16);
-  background:rgba(18,18,18,0.28);
+  /* 影で浮かせない：安っぽさ原因 */
+  box-shadow:none;
 
-  color:rgba(255,255,255,0.92);
+  /* 金属フレーム */
+  border:1px solid rgba(255,210,160,0.22);
+  background:
+    radial-gradient(120% 180% at 50% 0%,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.00) 55%),
+    linear-gradient(180deg,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.02) 30%,
+      rgba(0,0,0,0.20) 100%);
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  box-shadow:
-    0 18px 45px rgba(0,0,0,0.55),
-    inset 0 1px 0 rgba(255,255,255,0.08);
+  /* ガラス感 */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   -webkit-tap-highlight-color: transparent;
+  overflow:hidden;
 }
 
-/* 上面の反射（ガラスっぽさ） */
+/* 外周の“金属リング” */
 .btn::before{
   content:"";
   position:absolute;
   inset:0;
   border-radius:inherit;
-  background:linear-gradient(
-    180deg,
-    rgba(255,255,255,0.22),
-    rgba(255,255,255,0.05) 35%,
-    rgba(255,255,255,0.00) 65%
-  );
-  opacity:.22;
+  padding:1px;
+  background:linear-gradient(90deg,
+    rgba(255,210,160,0.08),
+    rgba(255,240,220,0.24),
+    rgba(255,210,160,0.08));
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
   pointer-events:none;
+  opacity:0.9;
 }
 
-/* メイン：深い赤＋薄い金属縁（安っぽさ回避） */
+/* 上面の反射（レンズっぽい） */
+.btn::after{
+  content:"";
+  position:absolute;
+  left:-20%;
+  top:-55%;
+  width:140%;
+  height:140%;
+  border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(255,255,255,0.18),
+    rgba(255,255,255,0.00) 60%);
+  pointer-events:none;
+  opacity:0.30;
+  transform:rotate(-10deg);
+}
+
+/* ===== メイン（赤）＝“ラッカー塗装”にする ===== */
 .primary{
-  background:linear-gradient(
-    180deg,
-    #8c1717,
-    #5a0d0d 65%,
-    #3b0808
-  );
-  border:1px solid rgba(255,210,160,0.20); /* うっすら金 */
-  box-shadow:
-    0 20px 55px rgba(120,0,0,0.42),
-    inset 0 1px 0 rgba(255,230,200,0.20);
+  border:1px solid rgba(255,210,160,0.26);
+  background:
+    radial-gradient(130% 160% at 50% 0%,
+      rgba(255,255,255,0.14),
+      rgba(255,255,255,0.00) 55%),
+    linear-gradient(180deg,
+      #7b1414 0%,
+      #4a0a0a 70%,
+      #2a0505 100%);
 }
 
-/* サブ：スモークガラス＋金属フレーム */
+/* 赤の“内側発光”をほんのり（派手にしない） */
+.primary .glow{
+  display:none;
+}
+
+/* ===== サブ（CONTRACT）＝スモークガラス ===== */
 .ghost{
-  background:rgba(8,8,8,0.35);
-  border:1px solid rgba(255,230,190,0.16);
-  color:rgba(255,255,255,0.86);
+  color:rgba(255,255,255,0.84);
+  border:1px solid rgba(255,210,160,0.18);
+  background:
+    radial-gradient(130% 160% at 50% 0%,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.00) 60%),
+    linear-gradient(180deg,
+      rgba(10,10,10,0.55),
+      rgba(0,0,0,0.78));
 }
 
-/* 押した時だけ小さく沈む（高級UIっぽい） */
+/* 押したときだけ“沈む”＝高級UI感 */
 .btn:active{
-  transform: translateY(1px);
+  transform:translateY(1px);
+  filter:saturate(1.05);
 }
 
-/* CAパネル */
+/* ===== CAパネル（同じ素材で統一） ===== */
 .caBox{
   position:absolute;
   left:6%;
@@ -116,12 +155,17 @@ body{
   z-index:30;
 
   padding:14px;
-  border-radius:14px;
+  border-radius:16px;
 
-  background:rgba(0,0,0,0.72);
-  border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background:
+    radial-gradient(120% 180% at 50% 0%,
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.00) 60%),
+    rgba(0,0,0,0.70);
+
+  border:1px solid rgba(255,210,160,0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
   opacity:0;
   transform: translateY(8px);
@@ -141,30 +185,31 @@ body{
   font-size:12px;
   line-height:1.35;
   padding:10px 12px;
-  border-radius:12px;
+  border-radius:14px;
+
   background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.10);
+  color:rgba(255,255,255,0.92);
+
   overflow-wrap:anywhere;
   word-break: break-word;
-  color:rgba(255,255,255,0.92);
 }
 
 .copyBtn{
   margin-top:10px;
   width:100%;
   padding:12px 14px;
-  border:none;
   border-radius:999px;
-  background:rgba(255,255,255,0.10);
-  border:1px solid rgba(255,255,255,0.14);
-  color:#fff;
+
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,210,160,0.14);
+  color:rgba(255,255,255,0.92);
+
   letter-spacing:.28em;
   cursor:pointer;
 }
 
-.copyBtn:active{
-  transform: translateY(1px);
-}
+.copyBtn:active{ transform:translateY(1px); }
 
 .toast{
   margin-top:8px;
