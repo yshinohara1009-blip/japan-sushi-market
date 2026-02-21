@@ -4,50 +4,32 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-
-<link rel="stylesheet" href="style.css?v=500" />
+<link rel="stylesheet" href="style.css?v=601" />
 </head>
 
 <body>
 
 <div class="wrap">
-  <div class="stage">
+  <div class="frame">
 
-    <!-- 背景ビジュアル -->
     <img src="JSM.PNG" class="art" alt="JAPAN SUSHI MARKET" />
 
-    <!-- ===== UI（画像に固定）===== -->
     <div class="ui">
-
-      <!-- Jupiter -->
-      <a
-        href="https://jup.ag/"
-        target="_blank"
-        rel="noopener"
-        class="btn primary">
+      <a class="btn primary"
+         href="https://jup.ag/"
+         target="_blank" rel="noopener">
         TRADE ON JUPITER
       </a>
 
-      <!-- Contract 表示トグル -->
-      <button class="btn ghost" id="contractBtn">
+      <button class="btn ghost" id="contractBtn" type="button">
         CONTRACT
       </button>
-
     </div>
 
-    <!-- ===== CAパネル ===== -->
     <div class="caBox" id="caBox">
-      <span class="caText" id="caText">
-        YOUR_CONTRACT_ADDRESS_HERE
-      </span>
-
-      <button class="copyBtn" id="copyBtn">
-        COPY
-      </button>
-
-      <div class="toast" id="toast">
-        COPIED
-      </div>
+      <span class="caText" id="caText">YOUR_CONTRACT_ADDRESS_HERE</span>
+      <button class="copyBtn" id="copyBtn" type="button">COPY</button>
+      <div class="toast" id="toast">COPIED</div>
     </div>
 
   </div>
@@ -60,17 +42,13 @@ const copyBtn = document.getElementById("copyBtn");
 const caText = document.getElementById("caText");
 const toast = document.getElementById("toast");
 
-/* CONTRACT 開閉 */
-contractBtn.onclick = () => {
-  caBox.classList.toggle("show");
-};
+contractBtn.onclick = () => caBox.classList.toggle("show");
 
-/* コピー */
 copyBtn.onclick = async () => {
   try{
     await navigator.clipboard.writeText(caText.innerText.trim());
     toast.classList.add("show");
-    setTimeout(()=>toast.classList.remove("show"),1200);
+    setTimeout(()=>toast.classList.remove("show"), 1200);
   }catch(e){
     alert("Copy failed");
   }
