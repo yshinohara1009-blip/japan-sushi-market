@@ -1,48 +1,59 @@
-<!DOCTYPE html>
+　<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css?v=101" />
+<link rel="stylesheet" href="style.css?v=203" />
 </head>
 
 <body>
 
-<main class="frame">
-  <div class="art">
-    <img src="JSM.PNG" alt="Japan Sushi Market">
+<div class="wrap">
+  <div class="stage">
+
+    <img src="JSM.PNG" class="art" alt="JAPAN SUSHI MARKET">
 
     <!-- Jupiter -->
-    <a class="hotspot trade"
-       href="https://jup.ag/swap/SOL-あなたのCA"
+    <a class="hit trade"
+       href="https://jup.ag/swap/SOL-ここにCA"
        target="_blank" rel="noopener"></a>
 
     <!-- Contract -->
-    <button class="hotspot ca-btn" onclick="toggleCA()"></button>
-
-    <!-- Notion -->
-    <a class="hotspot log"
-       href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
-       target="_blank" rel="noopener"></a>
+    <button class="hit ca" type="button" onclick="toggleCA()" aria-label="Contract Address"></button>
 
     <!-- CA表示 -->
-    <div id="caBox" class="caBox">
-      <code id="caText">あなたのCAをここに入れる</code>
-      <button onclick="copyCA()">COPY</button>
+    <div id="caBox" class="caBox" role="dialog" aria-label="Contract Address">
+      <code id="caText" class="caText">ここにCA</code>
+      <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
+      <div id="toast" class="toast" role="status" aria-live="polite">COPIED</div>
     </div>
 
   </div>
-</main>
+</div>
 
 <script>
 function toggleCA(){
   document.getElementById("caBox").classList.toggle("show");
 }
 
-function copyCA(){
-  const text = document.getElementById("caText").innerText;
-  navigator.clipboard.writeText(text);
+async function copyCA(){
+  const text = document.getElementById("caText").innerText.trim();
+  const toast = document.getElementById("toast");
+
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 900);
 }
 </script>
 
