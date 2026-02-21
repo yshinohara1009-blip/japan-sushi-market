@@ -3,7 +3,7 @@ body{
   font-family: serif;
 }
 
-/* ✅ 寿司を全面背景 */
+/* 寿司を全面背景 */
 .hero{
   height:100vh;
   background:url("bg.png.PNG") center/cover no-repeat;
@@ -30,7 +30,7 @@ body{
   color:rgba(0,0,0,0.35);
 }
 
-/* 下にボタン */
+/* 下 */
 .bottom{
   display:flex;
   flex-direction:column;
@@ -38,7 +38,7 @@ body{
   gap:16px;
 }
 
-/* 赤いピルボタン */
+/* ENTER MARKET ボタン */
 .enter{
   display:inline-block;
   width:min(560px, 92vw);
@@ -52,14 +52,35 @@ body{
 
   background:linear-gradient(#a11d1d,#6e0f0f);
   box-shadow:0 22px 55px rgba(0,0,0,0.35);
+  transition:.2s;
 }
 
-/* VIEW LOG（静かに） */
+.enter:active{
+  transform:translateY(1px);
+}
+
+/* VIEW LOG（アクティブ仕様） */
 .log{
   font-size:12px;
   letter-spacing:4px;
   color:rgba(0,0,0,0.35);
   text-decoration:none;
+
+  padding-bottom:2px;
+  border-bottom:1px solid rgba(0,0,0,0.25);
+
+  transition:color .2s ease, border-color .2s ease, transform .1s ease;
+}
+
+.log:hover{
+  color:rgba(0,0,0,0.6);
+  border-bottom:1px solid rgba(0,0,0,0.5);
+}
+
+.log:active{
+  transform:translateY(1px);
+  color:rgba(0,0,0,0.7);
+  border-bottom:1px solid rgba(0,0,0,0.6);
 }
 
 /* iPhoneアドレスバー対策 */
