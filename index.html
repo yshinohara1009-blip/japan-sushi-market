@@ -1,22 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAPAN SUSHI MARKET</title>
-  <link rel="stylesheet" href="style.css?v=5001">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JAPAN SUSHI MARKET</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <div class="hero">
-    <div class="top">
-      <h1 class="brand">JAPAN SUSHI<br>MARKET</h1>
-      <div class="tagline">EAT. TRADE. BURN.</div>
-    </div>
+  <section class="frame">
+    <div class="art">
+      <img src="JSM.PNG" alt="Japan Sushi Market" />
 
-    <div class="bottom">
-      <a href="/market/" class="btn primary">ENTER MARKET</a>
+      <!-- 画像内リンク：Jupiter（下中央） -->
+      <a class="hotspot hotspot-jup"
+         href="https://jup.ag/swap/SOL-あなたのCA"
+         target="_blank" rel="noopener"
+         aria-label="Trade on Jupiter"></a>
+
+      <!-- 画像内リンク：Notion（ログ） -->
+      <a class="hotspot hotspot-log"
+         href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
+         target="_blank" rel="noopener"
+         aria-label="View Record"></a>
+
+      <!-- 画像内：Contract toggle -->
+      <button class="hotspot hotspot-ca"
+              type="button"
+              onclick="toggleCA()"
+              aria-label="Contract Address"></button>
+
+      <!-- CA表示（画像内に浮かせる） -->
+      <div id="caBox" class="caBox" role="dialog" aria-label="Contract Address">
+        <div class="caRow">
+          <span class="caLabel">CA</span>
+          <code id="caText" class="caText">あなたのCAをここに入れる</code>
+        </div>
+        <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
+        <div id="toast" class="toast" role="status" aria-live="polite">Copied</div>
+      </div>
+
     </div>
-  </div>
+  </section>
+
+<script>
+function toggleCA(){
+  document.getElementById("caBox").classList.toggle("show");
+}
+
+async function copyCA(){
+  const text = document.getElementById("caText").innerText.trim();
+  const toast = document.getElementById("toast");
+
+  try{
+    await navigator.clipboard.writeText(text);
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), 900);
+}
+</script>
+
 </body>
 </html>
