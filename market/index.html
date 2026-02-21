@@ -1,80 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JAPAN SUSHI MARKET — MARKET</title>
-  <link rel="stylesheet" href="style.css?v=1" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAPAN SUSHI MARKET</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <main class="wrap">
-    <header class="head">
-      <div class="mark"></div>
-      <h1 class="brand">JAPAN SUSHI<br>MARKET</h1>
-      <div class="tagline">EAT. TRADE. BURN.</div>
-    </header>
 
-    <section class="card">
-      <div class="cardTop">
-        <div class="label">MARKET ACCESS</div>
-        <div class="note">Choose your route.</div>
-      </div>
+<div class="overlay">
+  <div class="button-area">
+    <button id="accessBtn">ACCESS RESTRICTED</button>
+  </div>
+</div>
 
-      <div class="cta">
-        <!-- BUYリンクはあとで差し替え -->
-        <a class="btn primary" href="#" target="_blank" rel="noopener">
-          BUY
-        </a>
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <p>UNREGISTERED MARKET ACCESS</p>
+    <p>SESSION RECORDED</p>
+    <button onclick="closeModal()">CLOSE</button>
+  </div>
+</div>
 
-        <a class="btn ghost"
-           href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link"
-           target="_blank"
-           rel="noopener">
-          VIEW LOG
-        </a>
-      </div>
+<script>
+document.getElementById("accessBtn").onclick = function() {
+  document.getElementById("modal").style.display = "flex";
+};
 
-      <details class="contract">
-        <summary>CONTRACT</summary>
-        <div class="contractBody">
-          <div class="row">
-            <div class="k">Network</div>
-            <div class="v">Solana</div>
-          </div>
-          <div class="row">
-            <div class="k">CA</div>
-            <div class="v mono" id="ca">COMING SOON</div>
-          </div>
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+</script>
 
-          <div class="miniCta">
-            <button class="copy" id="copyBtn" type="button">COPY</button>
-            <a class="thin" href="https://solscan.io/" target="_blank" rel="noopener">SOLSCAN</a>
-          </div>
-        </div>
-      </details>
-
-      <p class="disc">This is a meme project. Do your own research.</p>
-    </section>
-
-    <footer class="foot">
-      <a class="back" href="/">← Back</a>
-    </footer>
-  </main>
-
-  <script>
-    const btn = document.getElementById('copyBtn');
-    const ca  = document.getElementById('ca');
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(ca.textContent.trim());
-        btn.textContent = 'COPIED';
-        setTimeout(()=>btn.textContent='COPY', 1200);
-      } catch(e) {
-        btn.textContent = 'FAILED';
-        setTimeout(()=>btn.textContent='COPY', 1200);
-      }
-    });
-  </script>
 </body>
 </html>
