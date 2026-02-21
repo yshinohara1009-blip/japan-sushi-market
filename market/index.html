@@ -1,26 +1,29 @@
-　<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css?v=203" />
+<link rel="stylesheet" href="style.css?v=204" />
 </head>
 
 <body>
 
 <div class="wrap">
-  <div class="stage">
+  <div class="stage debug-off" id="stage">
 
     <img src="JSM.PNG" class="art" alt="JAPAN SUSHI MARKET">
 
-    <!-- Jupiter -->
+    <!-- Jupiter（透明タップ） -->
     <a class="hit trade"
        href="https://jup.ag/swap/SOL-ここにCA"
-       target="_blank" rel="noopener"></a>
+       target="_blank" rel="noopener"
+       aria-label="Trade on Jupiter"></a>
 
-    <!-- Contract -->
-    <button class="hit ca" type="button" onclick="toggleCA()" aria-label="Contract Address"></button>
+    <!-- Contract（透明タップ） -->
+    <button class="hit ca" type="button"
+            onclick="toggleCA()"
+            aria-label="Contract Address"></button>
 
     <!-- CA表示 -->
     <div id="caBox" class="caBox" role="dialog" aria-label="Contract Address">
@@ -28,6 +31,9 @@
       <button class="copyBtn" type="button" onclick="copyCA()">COPY</button>
       <div id="toast" class="toast" role="status" aria-live="polite">COPIED</div>
     </div>
+
+    <!-- デバッグ切替（見えない小ボタン） -->
+    <button class="debugToggle" type="button" onclick="toggleDebug()"></button>
 
   </div>
 </div>
@@ -54,6 +60,11 @@ async function copyCA(){
 
   toast.classList.add("show");
   setTimeout(()=>toast.classList.remove("show"), 900);
+}
+
+function toggleDebug(){
+  document.getElementById("stage").classList.toggle("debug-on");
+  document.getElementById("stage").classList.toggle("debug-off");
 }
 </script>
 
