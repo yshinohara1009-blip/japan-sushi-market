@@ -1,114 +1,29 @@
-:root{
-  --japan-red:#9E1B1B;
-  --ink:#2B2B2B;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JAPAN SUSHI MARKET</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-*{ box-sizing:border-box; }
+<body>
+  <div class="hero">
 
-html,body{
-  margin:0;
-  padding:0;
-  height:100%;
-  background:#000;
-  font-family:"Times New Roman", Times, serif;
-}
+    <div class="top">
+      <h1>JAPAN SUSHI MARKET</h1>
+      <p>EAT. TRADE. BURN.</p>
+    </div>
 
-/* 背景 */
-.hero{
-  position:relative;
-  width:100%;
-  height:100vh;
-  background-image:url("bg.png.PNG");
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-}
+    <div class="center">
+      <img src="bg.png.PNG" alt="Sushi">
+    </div>
 
-/* 上部 */
-.top{
-  position:absolute;
-  top:12%;
-  width:100%;
-  text-align:center;
-  padding:0 20px;
-}
+    <div class="bottom">
+      <a href="market/" class="enter">ENTER MARKET</a>
+      <a href="https://www.notion.so/JAPAN-SUSHI-MARKET-2ffc4899c21a805c901efed9f4b8ebda?source=copy_link" target="_blank" class="log">VIEW LOG</a>
+    </div>
 
-.brand{
-  margin:0;
-  font-size:28px;
-  font-weight:500;
-  letter-spacing:0.32em;
-  line-height:1.2;
-  color:var(--japan-red);
-}
-
-.tagline{
-  margin-top:18px;
-  font-size:12px;
-  letter-spacing:0.45em;
-  color:var(--ink);
-}
-
-/* 下部（ENTERだけなので少し上げて“主役感”） */
-.bottom{
-  position:absolute;
-  bottom:14%;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  padding:0 20px;
-}
-
-/* ボタン共通 */
-.btn{
-  width:min(84%,380px);
-  padding:20px 0;
-  border-radius:999px;
-  text-align:center;
-  text-decoration:none;
-  font-size:13px;
-  letter-spacing:0.38em;
-  display:block;
-  -webkit-tap-highlight-color:transparent;
-}
-
-/* ENTER MARKET（漆：主役版） */
-.btn.primary{
-  color:#F8F6F2;
-
-  /* 光→漆→深み の順で重ねて“本物感” */
-  background:
-    radial-gradient(130% 160% at 18% 10%, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0) 52%),
-    radial-gradient(90% 120% at 80% 120%, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 60%),
-    linear-gradient(180deg,#A82424 0%, #6A0F0F 100%);
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  /* 黒にじみ防止 */
-  overflow:hidden;
-  background-clip:padding-box;
-
-  /* 影：下に落とす＋内側の薄い光 */
-  box-shadow:
-    0 14px 30px rgba(60,8,8,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.16),
-    inset 0 -10px 18px rgba(0,0,0,0.18);
-
-  /* “上品に持ち上がってる感” */
-  transform:translateY(0);
-  transition:transform .14s ease, box-shadow .14s ease, filter .14s ease;
-}
-
-/* 押した時の“沈み” */
-.btn.primary:active{
-  transform:translateY(2px);
-  box-shadow:
-    0 8px 18px rgba(60,8,8,0.20),
-    inset 0 1px 0 rgba(255,255,255,0.12),
-    inset 0 -10px 18px rgba(0,0,0,0.18);
-}
-
-/* ちょいだけ“エッジ”を綺麗に（iPhone向け） */
-.btn.primary{
-  -webkit-font-smoothing:antialiased;
-}
+  </div>
+</body>
+</html>
