@@ -1,68 +1,75 @@
-body{
-  margin:0;
-  font-family: serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ✅ 寿司を全面背景 */
-.hero{
-  height:100vh;
-  background:url("bg.png.PNG") center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  text-align:center;
-  padding:58px 18px 54px;
+body {
+  font-family: "Times New Roman", serif;
+  background: #f6f1ea;
 }
 
-/* 上の文字 */
-.top h1{
-  margin:0;
-  font-size:38px;
-  letter-spacing:10px;
-  font-weight:400;
-  color:#7a1d1d;
+/* 寿司画像を切らずに全面表示 */
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  background: url("bg.png.PNG") center center / contain no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.top p{
-  margin:12px 0 0;
-  font-size:14px;
-  letter-spacing:6px;
-  color:rgba(0,0,0,0.35);
+/* 中央位置を少し下げる（iPhoneバランス用） */
+.content {
+  transform: translateY(18vh);
 }
 
-/* 下にボタン */
-.bottom{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
+h1 {
+  font-size: 42px;
+  letter-spacing: 0.25em;
+  color: #7b1e1e;
+  font-weight: 500;
+  margin-bottom: 14px;
 }
 
-/* 赤いピルボタン */
-.enter{
-  display:inline-block;
-  width:min(560px, 92vw);
-  padding:20px 0;
-  border-radius:999px;
-
-  text-decoration:none;
-  color:white;
-  letter-spacing:8px;
-  font-size:14px;
-
-  background:linear-gradient(#a11d1d,#6e0f0f);
-  box-shadow:0 22px 55px rgba(0,0,0,0.35);
+.tag {
+  font-size: 14px;
+  letter-spacing: 0.45em;
+  color: rgba(60,40,30,0.6);
+  margin-bottom: 60px;
 }
 
-/* VIEW LOG（静かに） */
-.log{
-  font-size:12px;
-  letter-spacing:4px;
-  color:rgba(0,0,0,0.35);
-  text-decoration:none;
+/* 赤ボタン */
+.enter-btn {
+  display: inline-block;
+  padding: 20px 70px;
+  border-radius: 50px;
+  background: linear-gradient(180deg,#b32020,#7a0e0e);
+  color: white;
+  letter-spacing: 0.35em;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  transition: all .25s ease;
 }
 
-/* iPhoneアドレスバー対策 */
-@supports (height: 100svh){
-  .hero{ height:100svh; }
+.enter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px rgba(0,0,0,0.35);
+}
+
+/* 小さく静かに見せるLOG導線 */
+.archive {
+  display: block;
+  margin-top: 28px;
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: rgba(80,60,50,0.5);
+  text-decoration: none;
+  transition: .25s;
+}
+
+.archive:hover {
+  color: rgba(80,60,50,0.9);
 }
