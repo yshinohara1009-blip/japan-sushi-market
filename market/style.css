@@ -2,101 +2,85 @@
 body{
   margin:0;
   background:#050505;
-  font-family: serif;
-  color:white;
-  text-align:center;
+  color:#e6e6e6;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* IMAGE */
-.market-visual img{
-  width:100%;
-  max-width:900px;
-  margin-top:40px;
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,.8));
+/* HERO IMAGE */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hero img{
+  max-height:92vh;
+  max-width:92vw;
+  object-fit:contain;
 }
 
 /* ACTION AREA */
-.market-actions{
-  margin-top:60px;
-  padding-bottom:80px;
+.action{
+  text-align:center;
+  margin-top:20px;
 }
 
-/* TRADE BUTTON */
-.trade-btn{
-  display:inline-block;
-  padding:18px 40px;
-  margin:12px;
-  letter-spacing:3px;
-  text-decoration:none;
-  color:white;
-  background:linear-gradient(180deg,#9c1d1d,#5c0d0d);
-  border-radius:14px;
-  box-shadow:0 15px 40px rgba(0,0,0,.6);
-  transition:.25s;
-}
-
-.trade-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 25px 60px rgba(0,0,0,.8);
-}
-
-/* CONTRACT BUTTON */
-.contract-btn{
-  padding:16px 34px;
-  margin:12px;
-  letter-spacing:3px;
-  color:#ccc;
-  background:transparent;
-  border:1px solid #444;
-  border-radius:14px;
-  cursor:pointer;
-  transition:.25s;
-}
-
-.contract-btn:hover{
-  border-color:#888;
-  color:white;
-}
-
-/* CA BOX */
-.ca-box{
-  margin-top:30px;
-  opacity:0;
-  transform:translateY(-10px);
-  transition:.3s;
-  pointer-events:none;
-}
-
-.ca-box.show{
-  opacity:1;
-  transform:translateY(0);
-  pointer-events:auto;
-}
-
-.ca-box p{
-  background:#111;
-  padding:12px;
-  border-radius:10px;
-  letter-spacing:1px;
-  font-size:13px;
-}
-
-/* COPY BUTTON */
-.copy-btn{
-  margin-top:10px;
-  padding:10px 20px;
-  border:none;
-  border-radius:8px;
-  background:#222;
-  color:white;
-  cursor:pointer;
-}
-
-/* COPIED TEXT */
-#copied{
+/* MAIN CTA (text only) */
+.cta{
   display:block;
-  margin-top:8px;
-  font-size:12px;
+  text-decoration:none;
+  color:#e6e6e6;
+  font-size:20px;
+  letter-spacing:0.04em;
+  margin-bottom:14px;
+  transition:opacity .25s;
+}
+
+.cta:hover{
+  opacity:.6;
+}
+
+/* CONTRACT LINK */
+.contract{
+  background:none;
+  border:none;
+  color:#777;
+  font-size:14px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.contract:hover{
+  color:#aaa;
+}
+
+/* CA TEXT */
+.ca{
+  margin-top:12px;
+  color:#999;
+  font-size:13px;
   opacity:0;
   transition:.3s;
+}
+
+.ca.show{
+  opacity:1;
+}
+
+/* ARCHIVE */
+.archive{
+  margin-top:80px;
+  padding-bottom:100px;
+  text-align:center;
+  color:#666;
+  font-size:12px;
+  letter-spacing:0.06em;
+  line-height:1.9;
+}
+
+.archive-title{
+  color:#888;
+  margin-bottom:10px;
 }
