@@ -9,45 +9,36 @@
 
 <body>
 
-<!-- MARKET VISUAL -->
-<section class="market-visual">
+<!-- HERO IMAGE -->
+<section class="hero">
   <img src="JSM.PNG" alt="Japan Sushi Market">
 </section>
 
-<!-- ACTION AREA -->
-<section class="market-actions">
-
-  <a href="https://jup.ag/swap/SOL-あなたのCA"
-     target="_blank"
-     class="trade-btn">
-     TRADE ON JUPITER
+<!-- ACTION -->
+<section class="action">
+  <a href="https://jup.ag/swap/SOL-あなたのCA" target="_blank" class="cta">
+    Trade on Jupiter
   </a>
 
-  <button class="contract-btn" onclick="toggleCA()">
-     CONTRACT
-  </button>
+  <button class="contract" onclick="toggleCA()">Contract Address</button>
 
-  <div id="caBox" class="ca-box">
-     <p id="caText">あなたのCAをここに入れる</p>
-     <button class="copy-btn" onclick="copyCA()">COPY</button>
-     <span id="copied">Copied</span>
+  <div id="caBox" class="ca">
+    あなたのCAをここに入れる
   </div>
+</section>
 
+<!-- ARCHIVE LOG -->
+<section class="archive">
+  <p class="archive-title">ARCHIVE</p>
+
+  <p>2025 — The market opened.</p>
+  <p>2025 — The first record was stored.</p>
 </section>
 
 <script>
 function toggleCA(){
   const box = document.getElementById("caBox");
   box.classList.toggle("show");
-}
-
-function copyCA(){
-  const text = document.getElementById("caText").innerText;
-  navigator.clipboard.writeText(text);
-
-  const copied = document.getElementById("copied");
-  copied.style.opacity = "1";
-  setTimeout(()=>{copied.style.opacity="0";},1000);
 }
 </script>
 
