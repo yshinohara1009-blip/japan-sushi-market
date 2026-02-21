@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>JAPAN SUSHI MARKET</title>
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <main class="wrap">
-    <!-- 画像を「背景」じゃなく「実体」として表示＝切れない -->
-    <img class="poster" src="JSM.PNG" alt="JAPAN SUSHI MARKET - WARNING" />
-  </main>
 
-  <!-- ボタンは常に下に固定 -->
-  <div class="cta">
-    <button id="accessBtn">ACCESS RESTRICTED</button>
+<!-- MARKET VISUAL -->
+<section class="market-visual">
+  <img src="JSM.PNG" alt="Japan Sushi Market">
+</section>
+
+<!-- ACTION AREA -->
+<section class="market-actions">
+
+  <a href="https://jup.ag/swap/SOL-あなたのCA"
+     target="_blank"
+     class="trade-btn">
+     TRADE ON JUPITER
+  </a>
+
+  <button class="contract-btn" onclick="toggleCA()">
+     CONTRACT
+  </button>
+
+  <div id="caBox" class="ca-box">
+     <p id="caText">あなたのCAをここに入れる</p>
+     <button class="copy-btn" onclick="copyCA()">COPY</button>
+     <span id="copied">Copied</span>
   </div>
 
-  <!-- モーダル -->
-  <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-box">
-      <div class="modal-title">UNREGISTERED MARKET ACCESS</div>
-      <div class="modal-sub">SESSION RECORDED</div>
-      <button class="modal-close" id="closeBtn">CLOSE</button>
-    </div>
-  </div>
+</section>
 
 <script>
-  const modal = document.getElementById("modal");
-  document.getElementById("accessBtn").onclick = () => {
-    modal.style.display = "flex";
-    modal.setAttribute("aria-hidden", "false");
-  };
-  document.getElementById("closeBtn").onclick = () => {
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-  };
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      modal.setAttribute("aria-hidden", "true");
-    }
-  };
+function toggleCA(){
+  const box = document.getElementById("caBox");
+  box.classList.toggle("show");
+}
+
+function copyCA(){
+  const text = document.getElementById("caText").innerText;
+  navigator.clipboard.writeText(text);
+
+  const copied = document.getElementById("copied");
+  copied.style.opacity = "1";
+  setTimeout(()=>{copied.style.opacity="0";},1000);
+}
 </script>
+
 </body>
 </html>
