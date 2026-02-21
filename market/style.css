@@ -1,30 +1,47 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  height: 100vh;
-  background: url("JSM.PNG") center center / cover no-repeat;
+html, body {
+  height: 100%;
+  background: #000;
   font-family: serif;
 }
 
-/* ボタン配置 */
-.overlay {
-  position: absolute;
-  inset: 0;
+/* 画像全体を見せる（切らない） */
+.wrap {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding-bottom: 8vh;
+  align-items: flex-start;
+  padding-bottom: 120px; /* 下の固定ボタン分の余白 */
 }
 
-button {
+.poster {
+  width: 100%;
+  max-width: 480px;  /* iPhoneでちょうど良い上限 */
+  height: auto;
+  display: block;
+}
+
+/* 下固定ボタン */
+.cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  pointer-events: none; /* 余計な被り防止 */
+}
+
+.cta button {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 420px;
   padding: 18px 44px;
   font-size: 16px;
   letter-spacing: 2px;
-  background: rgba(120, 20, 20, 0.9);
+  background: rgba(120, 20, 20, 0.92);
   color: #fff;
   border: none;
   border-radius: 40px;
@@ -35,20 +52,43 @@ button {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.72);
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .modal-box {
-  background: #111;
-  color: #fff;
-  padding: 30px 40px;
+  width: 100%;
+  max-width: 420px;
+  background: #0f0f0f;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 26px 22px;
   text-align: center;
-  letter-spacing: 1px;
+  color: #fff;
 }
 
-.modal-box button {
-  margin-top: 20px;
-  background: #333;
+.modal-title {
+  font-size: 14px;
+  letter-spacing: 2px;
+  opacity: 0.95;
+}
+
+.modal-sub {
+  margin-top: 10px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+.modal-close {
+  margin-top: 18px;
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  background: #2a2a2a;
+  color: #fff;
+  letter-spacing: 2px;
 }
