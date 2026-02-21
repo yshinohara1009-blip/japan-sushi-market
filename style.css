@@ -1,72 +1,53 @@
 body{
   margin:0;
   font-family: serif;
-  background:#f5ede6;
-  color:#222;
+  background:#000;
 }
 
-/* 画面全体 */
+/* 寿司を全面背景にする */
 .hero{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  align-items:center;
-  text-align:center;
-  padding:40px 20px 50px;
-}
+  height:100vh;
+  background-image:url("bg.png.PNG");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 
-/* 上 */
-.top h1{
-  margin:0;
-  letter-spacing:8px;
-  font-size:32px;
-  font-weight:400;
-}
-
-.top p{
-  margin-top:10px;
-  letter-spacing:5px;
-  font-size:12px;
-}
-
-/* 真ん中の寿司 */
-.center{
-  flex:1;
   display:flex;
   align-items:center;
   justify-content:center;
+  text-align:center;
 }
 
-.center img{
-  width:92%;
-  max-width:460px;
-  height:auto;
+/* 上に文字だけ浮かせる */
+.overlay{
+  color:#7a1d1d;
 }
 
-/* 下 */
-.bottom{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
+/* タイトル */
+.overlay h1{
+  margin:0;
+  font-size:38px;
+  letter-spacing:10px;
+  font-weight:400;
 }
 
-/* ENTER MARKET ボタン */
+.overlay p{
+  margin-top:12px;
+  font-size:14px;
+  letter-spacing:6px;
+}
+
+/* ボタン */
 .enter{
   display:inline-block;
-  padding:18px 52px;
-  background:linear-gradient(#a11d1d,#6e0f0f);
-  color:white;
-  text-decoration:none;
+  margin-top:40px;
+  padding:20px 60px;
   border-radius:40px;
-  letter-spacing:6px;
-  font-size:14px;
-}
-
-/* VIEW LOG */
-.log{
-  font-size:12px;
-  color:#777;
   text-decoration:none;
+  color:white;
+  letter-spacing:8px;
+  font-size:14px;
+
+  background:linear-gradient(#a11d1d,#6e0f0f);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
 }
