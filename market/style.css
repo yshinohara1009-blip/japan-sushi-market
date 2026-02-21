@@ -1,11 +1,10 @@
 body{
   margin:0;
   background:#000;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:100vh;
-  font-family: serif;
 }
 
 .wrap{
@@ -25,16 +24,17 @@ body{
   display:block;
 }
 
-/* 透明クリックゾーン */
+/* ✅ 透明タップ領域：必ず最前面に */
 .hit{
   position:absolute;
+  z-index:10;
   background:transparent;
   border:none;
   cursor:pointer;
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Jupiter（画像内の赤ボタン位置） */
+/* ✅ Jupiter（赤ボタン位置） */
 .trade{
   left:12%;
   right:12%;
@@ -42,7 +42,7 @@ body{
   height:11%;
 }
 
-/* Contract（画像内の黒ボタン位置） */
+/* ✅ Contract（黒ボタン位置） */
 .ca{
   left:26%;
   right:26%;
@@ -50,15 +50,15 @@ body{
   height:8%;
 }
 
-/* CA表示パネル（画像内に浮かせる） */
+/* CA表示 */
 .caBox{
   position:absolute;
+  z-index:20;
   left:8%;
   right:8%;
   bottom:38%;
   padding:14px;
   border-radius:12px;
-
   background:rgba(0,0,0,0.75);
   color:#fff;
   text-align:center;
@@ -115,4 +115,20 @@ body{
 .toast.show{
   opacity:1;
   transform: translateY(0);
+}
+
+/* デバッグ：当たり判定を見える化 */
+.stage.debug-on .trade{ outline:2px dashed rgba(255,255,255,0.7); }
+.stage.debug-on .ca{ outline:2px dashed rgba(255,255,255,0.7); }
+
+/* 右上に超小さい透明ボタン（押すとデバッグ切替） */
+.debugToggle{
+  position:absolute;
+  z-index:30;
+  top:6px;
+  right:6px;
+  width:34px;
+  height:34px;
+  background:transparent;
+  border:none;
 }
