@@ -1,4 +1,3 @@
-/* RESET */
 body{
   margin:0;
   background:#050505;
@@ -7,42 +6,47 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 
-/* HERO IMAGE */
+/* HERO IMAGE (CTAが同画面に入るサイズ) */
 .hero{
-  height:100vh;
+  height: calc(100vh - 220px);
   display:flex;
   align-items:center;
   justify-content:center;
+  padding-top:12px;
 }
 
 .hero img{
-  max-height:92vh;
+  max-height:100%;
   max-width:92vw;
   object-fit:contain;
 }
 
-/* ACTION AREA */
-.action{
-  text-align:center;
-  margin-top:20px;
+/* iPhoneアドレスバー対策 */
+@supports (height: 100svh){
+  .hero{ height: calc(100svh - 220px); }
 }
 
-/* MAIN CTA (text only) */
+/* ACTION */
+.action{
+  text-align:center;
+  margin-top:8px;
+  padding-bottom:18px;
+}
+
+/* CTA（文字だけ） */
 .cta{
   display:block;
   text-decoration:none;
   color:#e6e6e6;
   font-size:20px;
   letter-spacing:0.04em;
-  margin-bottom:14px;
+  margin-bottom:12px;
   transition:opacity .25s;
 }
 
-.cta:hover{
-  opacity:.6;
-}
+.cta:hover{ opacity:.6; }
 
-/* CONTRACT LINK */
+/* CONTRACT */
 .contract{
   background:none;
   border:none;
@@ -52,27 +56,23 @@ body{
   transition:.25s;
 }
 
-.contract:hover{
-  color:#aaa;
-}
+.contract:hover{ color:#aaa; }
 
-/* CA TEXT */
+/* CA表示 */
 .ca{
-  margin-top:12px;
+  margin-top:10px;
   color:#999;
   font-size:13px;
   opacity:0;
   transition:.3s;
 }
 
-.ca.show{
-  opacity:1;
-}
+.ca.show{ opacity:1; }
 
 /* ARCHIVE */
 .archive{
-  margin-top:80px;
-  padding-bottom:100px;
+  margin-top:60px;
+  padding-bottom:80px;
   text-align:center;
   color:#666;
   font-size:12px;
