@@ -6,11 +6,10 @@ html, body {
   padding: 0;
   overflow: hidden;              /* disable scroll */
   overscroll-behavior: none;     /* disable bounce */
-  touch-action: none;            /* prevent scroll gestures */
   background: #000;
 }
 
-/* Fullscreen stage */
+/* Fullscreen fixed stage */
 .stage {
   position: fixed;
   inset: 0;
@@ -20,43 +19,34 @@ html, body {
   background: #000;
 }
 
-/* Background image fits the screen */
+/* Background image */
 .bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* fills screen */
+  object-fit: cover;
   object-position: center;
   user-select: none;
   -webkit-user-drag: none;
-  pointer-events: none; /* so only hot areas are clickable */
+  pointer-events: none; /* clicks go to hotspots only */
 }
 
 /* ====== ERASE clickable area ======
-   This places the clickable hitbox where the red ERASE button is in your screenshot.
-   Adjust with --x/--y/--w/--h if needed.
+   tuned for your screenshot layout
 */
 .erase-hit {
-  --x: 50%;   /* center horizontally */
-  --y: 79%;   /* vertical position */
-  --w: 78%;   /* width of clickable area */
-  --h: 12%;   /* height of clickable area */
-
   position: absolute;
-  left: var(--x);
-  top: var(--y);
-  width: var(--w);
-  height: var(--h);
+  left: 50%;
+  top: 79%;
+  width: 82%;
+  height: 13%;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  cursor: pointer;
 
   /* invisible but tappable */
-  background: rgba(255, 0, 0, 0.0);
-}
+  background: rgba(255, 0, 0, 0);
+  cursor: pointer;
 
-/* Optional: iOS tap highlight off */
-.erase-hit {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
