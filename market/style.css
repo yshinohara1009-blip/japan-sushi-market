@@ -1,19 +1,19 @@
-/* ===== JAPAN SUSHI MARKET : DISPLAY MODE ===== */
-/* 完全固定・UIなし・スクロール不可展示ページ */
+/* ===== JAPAN SUSHI MARKET : LOCKED DISPLAY ===== */
+/* UIなし・スクロール不可・ERASEのみ反応 */
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;            /* スクロール完全禁止 */
+  overflow: hidden;            /* スクロール禁止 */
   position: fixed;
   background: #000;
-  touch-action: none;          /* iPhoneスワイプ対策 */
-  overscroll-behavior: none;   /* ゴムスクロール防止 */
+  touch-action: none;          /* iPhone対策 */
+  overscroll-behavior: none;
 }
 
-/* 画面固定コンテナ */
+/* 画面固定 */
 .main {
   position: fixed;
   top: 0;
@@ -22,12 +22,28 @@ html, body {
   height: 100vh;
 }
 
-/* 背景画像のみ表示 */
+/* 背景画像 */
 .bg {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* 画面にぴったり */
+  object-fit: cover;
   user-select: none;
   pointer-events: none;
+}
+
+/* ERASE部分だけ押せる透明リンク */
+.erase-link {
+  position: absolute;
+
+  /* ▼ ERASEボタンの位置に合わせた座標 */
+  bottom: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 260px;
+  height: 120px;
+
+  background: transparent;
+  cursor: pointer;
 }
