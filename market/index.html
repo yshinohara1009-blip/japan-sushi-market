@@ -1,21 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JSM</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>JAPAN SUSHI MARKET</title>
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-  <div class="main">
+  <!-- Fullscreen fixed stage (no scroll) -->
+  <main class="stage" aria-label="Japan Sushi Market">
+    <!-- Background image -->
+    <img class="bg" src="./bg.jpg" alt="" />
 
-    <!-- 背景画像 -->
-    <img src="JSM.PNG" class="bg">
-
-    <!-- ERASE位置だけクリック可能（透明リンク） -->
-    <a href="https://jup.ag" class="erase-link"></a>
-
-  </div>
+    <!-- Clickable ERASE button (Jupiter link) -->
+    <a
+      class="erase-hit"
+      href="https://jup.ag/swap/SOL-YOUR_CA_HERE"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="ERASE (Open Jupiter)"
+    ></a>
+  </main>
 </body>
 </html>
