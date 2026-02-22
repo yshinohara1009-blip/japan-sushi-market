@@ -38,7 +38,7 @@ html, body {
 .erase-hit {
   position: absolute;
   left: 50%;
-  top: 79%;
+  top: 70%;
   width: 82%;
   height: 13%;
   transform: translate(-50%, -50%);
