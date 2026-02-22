@@ -3,9 +3,18 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: hidden;          /* スクロール禁止 */
   overscroll-behavior: none;
   background: #000;
+}
+
+/* 全画面リンク */
+.full-link {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .stage {
@@ -14,9 +23,9 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #000;
 }
 
+/* 背景画像 */
 .bg {
   position: absolute;
   inset: 0;
@@ -26,19 +35,5 @@ html, body {
   object-position: center;
   user-select: none;
   -webkit-user-drag: none;
-  pointer-events: none;
-}
-
-/* ERASEボタン“だけ”の当たり判定（小さめ＆下寄せ） */
-.erase-hit {
-  position: absolute;
-  left: 50%;
-  top: 83.5%;       /* ← ここが重要：黒プレートより下に寄せる */
-  width: 72%;       /* ← 横幅も絞る */
-  height: 9.5%;     /* ← 高さを絞ってプレートに被らない */
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: rgba(255, 0, 0, 0);
-  cursor: pointer;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  pointer-events: none; /* 画像はクリック対象にしない */
 }
