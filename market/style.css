@@ -1,19 +1,19 @@
-/* ===== 完全固定LP（スクロール禁止仕様）===== */
+/* ===== JAPAN SUSHI MARKET : DISPLAY MODE ===== */
+/* 完全固定・UIなし・スクロール不可展示ページ */
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;          /* ← スクロール完全禁止 */
-  position: fixed;
   width: 100%;
+  overflow: hidden;            /* スクロール完全禁止 */
+  position: fixed;
   background: #000;
-  touch-action: none;
-  overscroll-behavior: none;
-  font-family: Arial, Helvetica, sans-serif;
+  touch-action: none;          /* iPhoneスワイプ対策 */
+  overscroll-behavior: none;   /* ゴムスクロール防止 */
 }
 
-/* 画面全体固定 */
+/* 画面固定コンテナ */
 .main {
   position: fixed;
   top: 0;
@@ -22,47 +22,12 @@ html, body {
   height: 100vh;
 }
 
-/* 背景画像 */
+/* 背景画像のみ表示 */
 .bg {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* 画面にぴったり */
   user-select: none;
   pointer-events: none;
-}
-
-/* タイトル */
-.title {
-  position: absolute;
-  top: 40px;
-  left: 50px;
-  color: white;
-  font-size: 20px;
-  letter-spacing: 4px;
-}
-
-/* ボタン共通 */
-.btn {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 18px 44px;
-  border: 1px solid rgba(255,255,255,0.4);
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 3px;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(4px);
-}
-
-/* ENTER MARKET */
-.btn-enter {
-  bottom: 100px;
-}
-
-/* VIEW LOG */
-.btn-log {
-  bottom: 40px;
 }
