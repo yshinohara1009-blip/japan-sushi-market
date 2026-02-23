@@ -1,89 +1,125 @@
+/* ---------------------------
+   Reset
+--------------------------- */
+
 body{
   margin:0;
-  font-family: serif;
+  font-family:"Inter", sans-serif;
+  -webkit-font-smoothing:antialiased;
 }
 
-/* 寿司を全面背景 */
+
+/* ---------------------------
+   Hero Background
+--------------------------- */
+
 .hero{
   height:100vh;
-  background:url("bg.png.PNG") center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  text-align:center;
-  padding:58px 18px 54px;
+  background:url("bg.png.PNG") 70% 85% / cover no-repeat;
+  position:relative;
+  overflow:hidden;
 }
 
-/* 上の文字 */
-.top h1{
-  margin:0;
-  font-size:38px;
-  letter-spacing:10px;
-  font-weight:400;
-  color:#7a1d1d;
-}
 
-.top p{
-  margin:12px 0 0;
-  font-size:14px;
-  letter-spacing:6px;
-  color:rgba(0,0,0,0.35);
-}
-
-/* 下 */
-.bottom{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
-}
-
-/* ENTER MARKET ボタン */
-.enter{
-  display:inline-block;
-  width:min(560px, 92vw);
-  padding:20px 0;
-  border-radius:999px;
-
-  text-decoration:none;
-  color:white;
-  letter-spacing:8px;
-  font-size:14px;
-
-  background:linear-gradient(#a11d1d,#6e0f0f);
-  box-shadow:0 22px 55px rgba(0,0,0,0.35);
-  transition:.2s;
-}
-
-.enter:active{
-  transform:translateY(1px);
-}
-
-/* VIEW LOG（アクティブ仕様） */
-.log{
-  font-size:12px;
-  letter-spacing:4px;
-  color:rgba(0,0,0,0.35);
-  text-decoration:none;
-
-  padding-bottom:2px;
-  border-bottom:1px solid rgba(0,0,0,0.25);
-
-  transition:color .2s ease, border-color .2s ease, transform .1s ease;
-}
-
-.log:hover{
-  color:rgba(0,0,0,0.6);
-  border-bottom:1px solid rgba(0,0,0,0.5);
-}
-
-.log:active{
-  transform:translateY(1px);
-  color:rgba(0,0,0,0.7);
-  border-bottom:1px solid rgba(0,0,0,0.6);
-}
-
-/* iPhoneアドレスバー対策 */
+/* iPhoneバー対策 */
 @supports (height: 100svh){
   .hero{ height:100svh; }
+}
+
+
+/* ---------------------------
+   Vertical Grid Line
+--------------------------- */
+
+.grid-line{
+  position:absolute;
+  left:26px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:#D8D8D8;
+  opacity:.6;
+}
+
+
+/* ---------------------------
+   Brand Title
+--------------------------- */
+
+.brand{
+  position:absolute;
+  top:64px;
+  left:48px;
+}
+
+.brand h1{
+  margin:0;
+  font-weight:300;
+  font-size:32px;
+  letter-spacing:.32em;
+  color:#D2D2D2;
+  line-height:1.8;
+}
+
+
+/* ---------------------------
+   Tagline
+--------------------------- */
+
+.tag{
+  position:absolute;
+  right:42px;
+  bottom:26%;
+  font-size:13px;
+  letter-spacing:.28em;
+  color:#CFCFCF;
+}
+
+
+/* ---------------------------
+   CTA Area
+--------------------------- */
+
+.cta{
+  position:absolute;
+  left:50%;
+  bottom:calc(env(safe-area-inset-bottom) + 44px);
+  transform:translateX(-50%);
+  display:flex;
+  gap:18px;
+}
+
+
+/* ---------------------------
+   Buttons
+--------------------------- */
+
+.btn{
+  text-decoration:none;
+  font-size:12px;
+  letter-spacing:.3em;
+  padding:16px 28px;
+  border-radius:999px;
+  transition:.25s ease;
+}
+
+
+/* メインCTA */
+.primary{
+  background:#2F3E55;
+  color:#fff;
+}
+
+.primary:hover{
+  background:#243244;
+}
+
+
+/* サブ */
+.ghost{
+  color:#BFBFBF;
+}
+
+.ghost:hover{
+  color:#FFFFFF;
 }
