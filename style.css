@@ -13,7 +13,7 @@ body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
-  overflow:hidden; /* スクロールさせない */
+  overflow:hidden;
   background:#fff;
 }
 
@@ -28,7 +28,7 @@ body{
   position:relative;
 }
 
-/* iPhoneのUIバー対策 */
+/* iPhoneアドレスバー対応 */
 @supports (height: 100svh){
   .hero{
     height:100svh;
@@ -37,23 +37,30 @@ body{
 
 
 /* =========================
-   Left Vertical Line（完全版）
+   Left Vertical Line（完全FIX版）
+   iOSの安全領域まで食い込ませる
 ========================= */
 
 .grid-line{
-  position:fixed;      /* ← absoluteじゃなくfixed */
+  position:fixed;
   left:26px;
-  top:0;
-  height:100vh;
+
+  /* 上の安全領域に食い込ませる */
+  top:calc(env(safe-area-inset-top) * -1);
+
+  /* その分だけ高さを伸ばす */
+  height:calc(100vh + env(safe-area-inset-top));
+
   width:1px;
   background:rgba(150,150,150,.6);
   pointer-events:none;
   z-index:5;
 }
 
+/* 新しいiOS用 */
 @supports (height: 100svh){
   .grid-line{
-    height:100svh;
+    height:calc(100svh + env(safe-area-inset-top));
   }
 }
 
@@ -65,7 +72,7 @@ body{
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 64px); /* 少し上げた位置 */
+  bottom:calc(env(safe-area-inset-bottom) + 28px);
   transform:translateX(-50%);
   display:flex;
   gap:16px;
@@ -96,7 +103,7 @@ body{
 
 
 /* =========================
-   VIEW LOG Button（サブ）
+   VIEW LOG Button
 ========================= */
 
 .log{
@@ -107,27 +114,4 @@ body{
   padding:16px 22px;
   border-radius:999px;
   font-size:12px;
-  letter-spacing:.30em;
-  transition:.2s ease;
-}
-
-.log:active{
-  transform:translateY(1px);
-}
-
-
-/* =========================
-   Small Screen Adjustment
-========================= */
-
-@media (max-width:420px){
-  .enter{
-    padding:15px 22px;
-    font-size:11px;
-  }
-
-  .log{
-    padding:15px 20px;
-    font-size:11px;
-  }
-}
+  letter-spacing:.30em
