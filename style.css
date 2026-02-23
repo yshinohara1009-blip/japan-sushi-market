@@ -1,37 +1,82 @@
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
+/* =========================
+   Reset
+========================= */
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+}
 
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
-  overflow:hidden; /* スクロール禁止 */
+  overflow:hidden; /* スクロールさせない */
+  background:#fff;
 }
 
-/* 背景（あなたの焼き込み画像） */
+
+/* =========================
+   Hero Background
+========================= */
+
 .hero{
   height:100vh;
   background:url("bg.png.PNG") 70% 85% / cover no-repeat;
   position:relative;
 }
 
-/* iPhoneアドレスバー対策 */
+/* iPhoneのUIバー対策 */
 @supports (height: 100svh){
-  .hero{ height:100svh; }
+  .hero{
+    height:100svh;
+  }
 }
 
-/* 下のボタン群 */
+
+/* =========================
+   Left Vertical Line（完全版）
+========================= */
+
+.grid-line{
+  position:fixed;      /* ← absoluteじゃなくfixed */
+  left:26px;
+  top:0;
+  height:100vh;
+  width:1px;
+  background:rgba(150,150,150,.6);
+  pointer-events:none;
+  z-index:5;
+}
+
+@supports (height: 100svh){
+  .grid-line{
+    height:100svh;
+  }
+}
+
+
+/* =========================
+   Bottom CTA Area
+========================= */
+
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 44px);
+  bottom:calc(env(safe-area-inset-bottom) + 64px); /* 少し上げた位置 */
   transform:translateX(-50%);
   display:flex;
   gap:16px;
   align-items:center;
 }
 
-/* ENTER MARKET */
+
+/* =========================
+   ENTER MARKET Button
+========================= */
+
 .enter{
   display:inline-block;
   text-decoration:none;
@@ -49,12 +94,16 @@ body{
   transform:translateY(1px);
 }
 
-/* VIEW LOG（薄いアウトライン） */
+
+/* =========================
+   VIEW LOG Button（サブ）
+========================= */
+
 .log{
   display:inline-block;
   text-decoration:none;
-  color:#BFBFBF;
-  border:1px solid rgba(191,191,191,.6);
+  color:#CFCFCF;
+  border:1px solid rgba(207,207,207,.5);
   padding:16px 22px;
   border-radius:999px;
   font-size:12px;
@@ -64,4 +113,21 @@ body{
 
 .log:active{
   transform:translateY(1px);
+}
+
+
+/* =========================
+   Small Screen Adjustment
+========================= */
+
+@media (max-width:420px){
+  .enter{
+    padding:15px 22px;
+    font-size:11px;
+  }
+
+  .log{
+    padding:15px 20px;
+    font-size:11px;
+  }
 }
