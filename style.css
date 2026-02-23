@@ -13,7 +13,7 @@ body{
 }
 
 /* =========================
-   HERO（背景画像だけ）
+   HERO（背景画像のみ）
 ========================= */
 .hero{
   height:100vh;
@@ -27,12 +27,12 @@ body{
 }
 
 /* =========================
-   BUTTON AREA
+   BUTTON AREA（寿司と距離を取る）
 ========================= */
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 60px); /* 少し下げて安定 */
+  bottom:calc(env(safe-area-inset-bottom) + 90px); /* ← 距離を広げた */
   transform:translateX(-50%);
   display:flex;
   gap:22px;
@@ -40,7 +40,7 @@ body{
 }
 
 /* =========================
-   ENTER MARKET（主役）
+   ENTER MARKET
 ========================= */
 .enter{
   text-decoration:none;
@@ -55,12 +55,12 @@ body{
   background:rgba(255,255,255,0.55);
   backdrop-filter:blur(8px);
 
-  border:1px solid rgba(0,0,0,0.22); /* 少しだけ強調 */
+  border:1px solid rgba(0,0,0,0.22);
   transition:all .28s ease;
 }
 
 /* =========================
-   VIEW LOG（控えめ）
+   VIEW LOG
 ========================= */
 .log{
   text-decoration:none;
@@ -80,7 +80,7 @@ body{
 }
 
 /* =========================
-   PC Hover Only（モバイルは反応させない）
+   PC Hover Only
 ========================= */
 @media (hover:hover){
 
