@@ -1,125 +1,67 @@
-/* ---------------------------
-   Reset
---------------------------- */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
 
 body{
   margin:0;
-  font-family:"Inter", sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
+  overflow:hidden; /* スクロール禁止 */
 }
 
-
-/* ---------------------------
-   Hero Background
---------------------------- */
-
+/* 背景（あなたの焼き込み画像） */
 .hero{
   height:100vh;
   background:url("bg.png.PNG") 70% 85% / cover no-repeat;
   position:relative;
-  overflow:hidden;
 }
 
-
-/* iPhoneバー対策 */
+/* iPhoneアドレスバー対策 */
 @supports (height: 100svh){
   .hero{ height:100svh; }
 }
 
-
-/* ---------------------------
-   Vertical Grid Line
---------------------------- */
-
-.grid-line{
-  position:absolute;
-  left:26px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:#D8D8D8;
-  opacity:.6;
-}
-
-
-/* ---------------------------
-   Brand Title
---------------------------- */
-
-.brand{
-  position:absolute;
-  top:64px;
-  left:48px;
-}
-
-.brand h1{
-  margin:0;
-  font-weight:300;
-  font-size:32px;
-  letter-spacing:.32em;
-  color:#D2D2D2;
-  line-height:1.8;
-}
-
-
-/* ---------------------------
-   Tagline
---------------------------- */
-
-.tag{
-  position:absolute;
-  right:42px;
-  bottom:26%;
-  font-size:13px;
-  letter-spacing:.28em;
-  color:#CFCFCF;
-}
-
-
-/* ---------------------------
-   CTA Area
---------------------------- */
-
-.cta{
+/* 下のボタン群 */
+.bottom{
   position:absolute;
   left:50%;
   bottom:calc(env(safe-area-inset-bottom) + 44px);
   transform:translateX(-50%);
   display:flex;
-  gap:18px;
+  gap:16px;
+  align-items:center;
 }
 
-
-/* ---------------------------
-   Buttons
---------------------------- */
-
-.btn{
+/* ENTER MARKET */
+.enter{
+  display:inline-block;
   text-decoration:none;
-  font-size:12px;
-  letter-spacing:.3em;
-  padding:16px 28px;
-  border-radius:999px;
-  transition:.25s ease;
-}
-
-
-/* メインCTA */
-.primary{
-  background:#2F3E55;
   color:#fff;
+  background:#2F3E55;
+  padding:16px 26px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.30em;
+  box-shadow:0 18px 45px rgba(0,0,0,.18);
+  transition:.2s ease;
 }
 
-.primary:hover{
-  background:#243244;
+.enter:active{
+  transform:translateY(1px);
 }
 
-
-/* サブ */
-.ghost{
+/* VIEW LOG（薄いアウトライン） */
+.log{
+  display:inline-block;
+  text-decoration:none;
   color:#BFBFBF;
+  border:1px solid rgba(191,191,191,.6);
+  padding:16px 22px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.30em;
+  transition:.2s ease;
 }
 
-.ghost:hover{
-  color:#FFFFFF;
+.log:active{
+  transform:translateY(1px);
 }
