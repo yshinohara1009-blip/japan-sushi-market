@@ -1,67 +1,99 @@
+/* =========================
+   RESET
+========================= */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
 
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
+  background:#ffffff;
+  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
   -webkit-font-smoothing:antialiased;
   overflow:hidden;
-  background:#fff;
 }
 
-/* 背景（文字も線も全部“画像に任せる”） */
+/* =========================
+   HERO（背景画像のみ）
+========================= */
 .hero{
   height:100vh;
-  background:url("bg.png.PNG") 70% 85% / cover no-repeat;
+  background:url("bg.png.PNG") center / cover no-repeat;
   position:relative;
 }
 
+/* iPhone対応 */
 @supports (height:100svh){
   .hero{ height:100svh; }
 }
 
-/* ボタンだけ配置 */
+/* =========================
+   BUTTON AREA（中央下）
+========================= */
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 48px);
+  bottom:calc(env(safe-area-inset-bottom) + 52px);
   transform:translateX(-50%);
   display:flex;
   gap:22px;
   align-items:center;
 }
 
-/* ENTER / VIEW（薄いラベル感） */
-.enter, .log{
-  display:inline-block;
+/* =========================
+   ENTER MARKET
+========================= */
+.enter{
   text-decoration:none;
+  color:#2C2C2C;
+
   padding:18px 30px;
   border-radius:44px;
+
   font-size:11px;
   letter-spacing:.32em;
-  background:rgba(255,255,255,.55);
+
+  background:rgba(255,255,255,0.55);
   backdrop-filter:blur(8px);
-  border:1px solid rgba(0,0,0,.12);
-  transition:all .25s ease;
+
+  border:1px solid rgba(0,0,0,0.16);
+  transition:all .28s ease;
 }
 
-.enter{
-  color:#2C2C2C;
-  border-color:rgba(0,0,0,.16);
-}
-
+/* =========================
+   VIEW LOG
+========================= */
 .log{
+  text-decoration:none;
   color:#9A9A9A;
+
+  padding:18px 26px;
+  border-radius:44px;
+
+  font-size:11px;
+  letter-spacing:.28em;
+
+  background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(6px);
+
+  border:1px solid rgba(0,0,0,0.10);
+  transition:all .28s ease;
 }
 
+/* =========================
+   PC Hover Only
+========================= */
 @media (hover:hover){
+
   .enter:hover{
     background:#2F3E55;
-    color:#fff;
+    color:#ffffff;
     border-color:#2F3E55;
   }
+
   .log:hover{
     color:#2F3E55;
     border-color:#2F3E55;
+    background:rgba(255,255,255,0.65);
   }
+
 }
