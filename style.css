@@ -1,132 +1,94 @@
-/* =========================
-   Reset
-========================= */
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-
+/* リセット */
 body{
   margin:0;
-  font-family:"Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  -webkit-font-smoothing:antialiased;
-  overflow:hidden;
-  background:#fff;
+  font-family: serif;
+  background:#ece7e6;
 }
 
-
-/* =========================
-   Hero Background
-========================= */
+/* 背景 */
 .hero{
   height:100vh;
-  background:url("bg.png.PNG") 70% 85% / cover no-repeat;
+  background:url("bg.png.PNG") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  align-items:center;
+  padding-bottom:110px;
   position:relative;
 }
 
-@supports (height: 100svh){
-  .hero{ height:100svh; }
+/* --- 画像に焼き込まれている線を消すマスク --- */
+.hero::before{
+  content:"";
+  position:fixed;
+  left:0;
+  top:0;
+  width:120px;
+  height:100vh;
+  background:#ece7e6;
+  z-index:1;
+  pointer-events:none;
 }
 
-
-/* =========================
-   Left Vertical Line（上まで見える版）
-========================= */
+/* 本物のライン */
 .grid-line{
   position:fixed;
   left:26px;
-  top:calc(env(safe-area-inset-top) * -1);
-  height:calc(100vh + env(safe-area-inset-top));
+  top:0;
   width:1px;
-  background:rgba(160,160,160,.45); /* 少し薄め：上の“届いてない感”軽減 */
+  height:100vh;
+  background:rgba(0,0,0,0.18);
+  z-index:2;
   pointer-events:none;
-  z-index:5;
 }
 
-@supports (height: 100svh){
-  .grid-line{
-    height:calc(100svh + env(safe-area-inset-top));
-  }
-}
-
-
-/* =========================
-   Bottom CTA Area
-========================= */
+/* ボタンエリア */
 .bottom{
-  position:absolute;
-  left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 28px);
-  transform:translateX(-50%);
   display:flex;
-  gap:18px;
-  align-items:center;
+  gap:26px;
+  z-index:3;
 }
 
-
-/* =========================
-   ENTER MARKET（高級感）
-========================= */
+/* ENTER MARKET */
 .enter{
-  display:inline-block;
   text-decoration:none;
+  color:white;
+  letter-spacing:4px;
+  font-size:13px;
 
-  font-weight:300;
-  font-size:11px;
-  letter-spacing:.22em;
-
-  color:#fff;
-  background:#2F3E55;
-
-  padding:18px 28px;
+  padding:18px 42px;
   border-radius:999px;
 
-  box-shadow:0 14px 40px rgba(0,0,0,.16);
-  transition:transform .12s ease, opacity .2s ease;
+  background:#2f3b52;
+  box-shadow:0 14px 40px rgba(0,0,0,0.25);
+
+  transition:.2s ease;
 }
 
-.enter:active{
-  transform:translateY(1px);
+.enter:hover{
+  transform:translateY(-1px);
 }
 
-
-/* =========================
-   VIEW LOG（安っぽさ回避：ボタン化しない）
-========================= */
+/* VIEW LOG */
 .log{
-  display:inline-block;
   text-decoration:none;
+  color:rgba(0,0,0,0.35);
+  letter-spacing:4px;
+  font-size:13px;
 
-  font-weight:300;
-  font-size:11px;
-  letter-spacing:.18em;
+  padding:18px 38px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.15);
 
-  color:#B8B8B8;
-  padding:18px 8px;
-  border:none;
-
-  opacity:.72;
-  transition:opacity .2s ease, transform .12s ease;
+  transition:.2s ease;
 }
 
-.log:hover{ opacity:.92; }
-
-.log:active{
-  transform:translateY(1px);
-  opacity:1;
+.log:hover{
+  color:rgba(0,0,0,0.6);
+  border-color:rgba(0,0,0,0.35);
 }
 
-
-/* =========================
-   Small Screen Adjustment
-========================= */
-@media (max-width:420px){
-  .enter{
-    padding:17px 24px;
-    font-size:10.5px;
-    letter-spacing:.20em;
-  }
-  .log{
-    padding:17px 6px;
-    font-size:10.5px;
-    letter-spacing:.16em;
-  }
+/* iPhoneアドレスバー対策 */
+@supports (height:100svh){
+  .hero{ height:100svh; }
 }
