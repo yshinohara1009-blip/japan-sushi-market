@@ -1,58 +1,145 @@
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-
+/* =========================
+   RESET
+========================= */
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-  overflow:hidden;
-  background:#fff;
+  font-family: serif;
+  background:#f6f6f6;
 }
 
-/* 背景（寿司が右下に来るように戻す） */
+/* =========================
+   HERO（背景寿司）
+========================= */
 .hero{
-  height:100vh;
-  background:url("bg.png.PNG") 70% 85% / cover no-repeat;
   position:relative;
+  height:100vh;
+  background:url("bg.png.PNG") center/cover no-repeat;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  padding:64px 24px;
+  overflow:hidden;
 }
 
+/* iPhoneアドレスバー対策 */
 @supports (height:100svh){
   .hero{ height:100svh; }
 }
 
-/* ボタン */
+/* =========================
+   左の縦ライン（←これが切れない本物）
+========================= */
+.hero::before{
+  content:"";
+  position:absolute;
+  left:22px;
+  top:0;
+  bottom:0;
+  width:1px;
+  background:rgba(0,0,0,0.18);
+}
+
+/* =========================
+   左上タイトル（背景に馴染ませる）
+========================= */
+.top{
+  margin-left:40px;
+}
+
+.top h1{
+  margin:0;
+  font-size:28px;
+  letter-spacing:.28em;
+  font-weight:400;
+  color:rgba(0,0,0,0.35);
+  line-height:1.9;
+}
+
+.top p{
+  display:none; /* ← 重複表示防止 */
+}
+
+/* =========================
+   Eat.Trade.Burn.（右側）
+========================= */
+.hero::after{
+  content:"Eat. Trade. Burn.";
+  position:absolute;
+  right:8%;
+  top:48%;
+  transform:translateY(-50%);
+  font-size:14px;
+  letter-spacing:.22em;
+  color:rgba(0,0,0,0.28);
+}
+
+/* =========================
+   BUTTON AREA（下中央固定）
+========================= */
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 28px);
+  bottom:calc(env(safe-area-inset-bottom) + 48px);
   transform:translateX(-50%);
   display:flex;
-  gap:18px;
+  gap:22px;
   align-items:center;
 }
 
+/* =========================
+   ENTER MARKET（主役）
+========================= */
 .enter{
-  display:inline-block;
   text-decoration:none;
-  color:#fff;
-  background:#2F3E55;
-  padding:18px 28px;
-  border-radius:999px;
+  color:#2C2C2C;
+
+  padding:18px 30px;
+  border-radius:44px;
+
   font-size:11px;
-  letter-spacing:.22em;
-  box-shadow:0 14px 40px rgba(0,0,0,.16);
+  letter-spacing:.32em;
+
+  border:1px solid rgba(0,0,0,0.18);
+
+  background:rgba(255,255,255,0.55);
+  backdrop-filter:blur(8px);
+
+  transition:all .28s ease;
 }
 
-.enter:active{ transform:translateY(1px); }
-
+/* =========================
+   VIEW LOG（控えめ）
+========================= */
 .log{
-  display:inline-block;
   text-decoration:none;
-  color:#B8B8B8;
-  padding:18px 8px;
+  color:#9A9A9A;
+
+  padding:18px 26px;
+  border-radius:44px;
+
   font-size:11px;
-  letter-spacing:.18em;
-  opacity:.72;
+  letter-spacing:.28em;
+
+  border:1px solid rgba(0,0,0,0.10);
+  background:transparent;
+
+  transition:all .28s ease;
 }
 
-.log:active{ transform:translateY(1px); opacity:1; }
+/* =========================
+   PCだけ反応（モバイルは静か）
+========================= */
+@media (hover:hover){
+
+  .enter:hover{
+    background:#2F3E55;
+    color:#fff;
+    border-color:#2F3E55;
+  }
+
+  .log:hover{
+    color:#2F3E55;
+    border-color:#2F3E55;
+  }
+
+}
