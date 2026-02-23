@@ -1,81 +1,26 @@
-/* =========================
-   RESET
-========================= */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
 body{
   margin:0;
-  font-family: serif;
-  background:#f6f6f6;
-}
-
-/* =========================
-   HERO（背景寿司）
-========================= */
-.hero{
-  position:relative;
-  height:100vh;
-  background:url("bg.png.PNG") center/cover no-repeat;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding:64px 24px;
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","Helvetica Neue",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
   overflow:hidden;
+  background:#fff;
 }
 
-/* iPhoneアドレスバー対策 */
+/* 背景（文字も線も全部“画像に任せる”） */
+.hero{
+  height:100vh;
+  background:url("bg.png.PNG") 70% 85% / cover no-repeat;
+  position:relative;
+}
+
 @supports (height:100svh){
   .hero{ height:100svh; }
 }
 
-/* =========================
-   左の縦ライン（←これが切れない本物）
-========================= */
-.hero::before{
-  content:"";
-  position:absolute;
-  left:22px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:rgba(0,0,0,0.18);
-}
-
-/* =========================
-   左上タイトル（背景に馴染ませる）
-========================= */
-.top{
-  margin-left:40px;
-}
-
-.top h1{
-  margin:0;
-  font-size:28px;
-  letter-spacing:.28em;
-  font-weight:400;
-  color:rgba(0,0,0,0.35);
-  line-height:1.9;
-}
-
-.top p{
-  display:none; /* ← 重複表示防止 */
-}
-
-/* =========================
-   Eat.Trade.Burn.（右側）
-========================= */
-.hero::after{
-  content:"Eat. Trade. Burn.";
-  position:absolute;
-  right:8%;
-  top:48%;
-  transform:translateY(-50%);
-  font-size:14px;
-  letter-spacing:.22em;
-  color:rgba(0,0,0,0.28);
-}
-
-/* =========================
-   BUTTON AREA（下中央固定）
-========================= */
+/* ボタンだけ配置 */
 .bottom{
   position:absolute;
   left:50%;
@@ -86,60 +31,37 @@ body{
   align-items:center;
 }
 
-/* =========================
-   ENTER MARKET（主役）
-========================= */
-.enter{
+/* ENTER / VIEW（薄いラベル感） */
+.enter, .log{
+  display:inline-block;
   text-decoration:none;
-  color:#2C2C2C;
-
   padding:18px 30px;
   border-radius:44px;
-
   font-size:11px;
   letter-spacing:.32em;
-
-  border:1px solid rgba(0,0,0,0.18);
-
-  background:rgba(255,255,255,0.55);
+  background:rgba(255,255,255,.55);
   backdrop-filter:blur(8px);
-
-  transition:all .28s ease;
+  border:1px solid rgba(0,0,0,.12);
+  transition:all .25s ease;
 }
 
-/* =========================
-   VIEW LOG（控えめ）
-========================= */
+.enter{
+  color:#2C2C2C;
+  border-color:rgba(0,0,0,.16);
+}
+
 .log{
-  text-decoration:none;
   color:#9A9A9A;
-
-  padding:18px 26px;
-  border-radius:44px;
-
-  font-size:11px;
-  letter-spacing:.28em;
-
-  border:1px solid rgba(0,0,0,0.10);
-  background:transparent;
-
-  transition:all .28s ease;
 }
 
-/* =========================
-   PCだけ反応（モバイルは静か）
-========================= */
 @media (hover:hover){
-
   .enter:hover{
     background:#2F3E55;
     color:#fff;
     border-color:#2F3E55;
   }
-
   .log:hover{
     color:#2F3E55;
     border-color:#2F3E55;
   }
-
 }
