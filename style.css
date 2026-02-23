@@ -13,7 +13,7 @@ body{
 }
 
 /* =========================
-   HERO（背景画像のみ）
+   HERO（背景画像だけ）
 ========================= */
 .hero{
   height:100vh;
@@ -21,18 +21,18 @@ body{
   position:relative;
 }
 
-/* iPhone対応 */
+/* iPhoneアドレスバー対策 */
 @supports (height:100svh){
   .hero{ height:100svh; }
 }
 
 /* =========================
-   BUTTON AREA（中央下）
+   BUTTON AREA
 ========================= */
 .bottom{
   position:absolute;
   left:50%;
-  bottom:calc(env(safe-area-inset-bottom) + 52px);
+  bottom:calc(env(safe-area-inset-bottom) + 60px); /* 少し下げて安定 */
   transform:translateX(-50%);
   display:flex;
   gap:22px;
@@ -40,7 +40,7 @@ body{
 }
 
 /* =========================
-   ENTER MARKET
+   ENTER MARKET（主役）
 ========================= */
 .enter{
   text-decoration:none;
@@ -55,12 +55,12 @@ body{
   background:rgba(255,255,255,0.55);
   backdrop-filter:blur(8px);
 
-  border:1px solid rgba(0,0,0,0.16);
+  border:1px solid rgba(0,0,0,0.22); /* 少しだけ強調 */
   transition:all .28s ease;
 }
 
 /* =========================
-   VIEW LOG
+   VIEW LOG（控えめ）
 ========================= */
 .log{
   text-decoration:none;
@@ -80,7 +80,7 @@ body{
 }
 
 /* =========================
-   PC Hover Only
+   PC Hover Only（モバイルは反応させない）
 ========================= */
 @media (hover:hover){
 
